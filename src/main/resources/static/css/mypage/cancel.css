@@ -1,0 +1,15 @@
+.checkbox-group {
+    font-family: Arial, sans-serif;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+label {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/* 스타일을 원하는 대로 수정할 수 있습니다. */

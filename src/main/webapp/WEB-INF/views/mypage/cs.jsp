@@ -32,12 +32,12 @@
 
         <div class="col-lg-3">
 
-            <h1 class="my-4">mypage</h1>
+            <h1 class="my-4">마이페이지</h1>
             <div class="list-group">
-                <a href="mypage" class="list-group-item">my info</a>
-                <a href="password" class="list-group-item">change password</a>
-                <a href="mymarker" class="list-group-item">my marker</a>
-                <a href="cancel" class="list-group-item">cancel account</a>
+                <a href="mypage" class="list-group-item">나의 정보</a>
+                <a href="password" class="list-group-item">비밀번호 변경</a>
+                <a href="mymarker" class="list-group-item">등록한 마커</a>
+                <a href="cancel" class="list-group-item">회원 탈퇴</a>
                 <a href="cs" class="list-group-item">문의사항</a>
             </div>
 
@@ -46,51 +46,24 @@
         <div class="col-lg-6">
             <div class="p-5">
                 <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-2">Cancel account</h1>
-                    <p class="mb-4">check why you will cancel account</p>
+                    <h1 class="h4 text-gray-900 mb-2">문의사항</h1>
+                    <p class="mb-4">어떤 점이 불편하셨나요? 고객님의 의견을 반영하여 더 좋은 모습으로 찾아 뵙기 위해 노력하겠습니다.</p>
                     <%-- 어떤 점이 불편하셨나요? 고객님의 의견을 반영하여 더 좋은 모습으로 찾아 뵙기 위해 노력하겠습니다.--%>
                 </div>
-                <input type="checkbox" id="issue1">
-                <label for="issue1">low infomation</label><br>
-
-                <input type="checkbox" id="issue2">
-                <label for="issue2">unnecessarily infomation</label><br>
-
-                <input type="checkbox" id="issue3">
-                <label for="issue3">contents search inconvenient</label><br>
-
-                <input type="checkbox" id="issue4">
-                <label for="issue4">site inconvenient</label><br>
-
-                <input type="checkbox" id="issue5">
-                <label for="issue5">low membership benefits</label><br>
-
-                <input type="checkbox" id="issue6">
-                <label for="issue6">Counsellor unfriendly</label><br>
-
-                <input type="checkbox" id="issue7">
-                <label for="issue7">Privacy and security concerns</label><br>
-
-                <input type="checkbox" id="issue8">
-                <label for="issue8">시스템 오류</label><br>
-
-                <input type="checkbox" id="issue9">
-                <label for="issue9">not use Yogomogo</label><br>
 
                 <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-2">Inter ID & PASSWORD</h1>
-                    <%--정확한 본인확인을 위해 비밀번호를 입력해 주세요.--%>
+<%--                    <h1 class="h4 text-gray-900 mb-2">Inter ID & PASSWORD</h1>--%>
                     <form class="user">
                         <div class="form-group">
-                            <input type="id" class="form-control form-control-user"
+                            <input type="title" class="form-control form-control-user"
                                    id="exampleInputpwd" aria-describedby="pwdHelp"
-                                   placeholder="Enter your ID">
-                            <input type="pwd" class="form-control form-control-user"
+                                   placeholder="제목을 적어주세요">
+                            <input type="content" class="form-control form-control-user"
                                    id="exampleInputpwd1" aria-describedby="pwdHelp"
-                                   placeholder="Enter your Password">
+                                   placeholder="내용을 적어주세요">
                         </div>
                         <a href="login" class="btn btn-primary btn-user btn-block">
-                            submit
+                            보내기
                         </a>
                     </form>
 

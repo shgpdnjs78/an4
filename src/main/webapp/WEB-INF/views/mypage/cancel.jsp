@@ -47,7 +47,7 @@
             <div class="p-5">
                 <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-2">계정 탈퇴</h1>
-                    <p class="mb-4">check why you will cancel account</p>
+                    <p class="mb-4">계정을 탈퇴하는 이유를 체크해 주세요</p>
         <%-- 어떤 점이 불편하셨나요? 고객님의 의견을 반영하여 더 좋은 모습으로 찾아 뵙기 위해 노력하겠습니다.--%>
                 </div>
                 <input type="checkbox" id="issue1">
@@ -66,16 +66,23 @@
                 <label for="issue5">회원 이익 부족</label><br>
 
                 <input type="checkbox" id="issue6">
-                <label for="issue6">불친절한 고객응대</label><br>
+                <label for="issue6">불친절한 고객 응대</label><br>
 
                 <input type="checkbox" id="issue7">
-                <label for="issue7">보안위험</label><br>
+                <label for="issue7">보안 위험</label><br>
 
                 <input type="checkbox" id="issue8">
                 <label for="issue8">시스템 오류</label><br>
 
                 <input type="checkbox" id="issue9">
                 <label for="issue9">Yogomogo를 사용하지 않음</label><br>
+
+                <input type="checkbox" id="issue10">
+                <label for="issue9">기타</label><br>
+
+                <input type="id" class="form-control form-control-user"
+                       id="reason" aria-describedby="pwdHelp"
+                       placeholder="사유를 적어주세요">
 
                 <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-2">Inter ID & PASSWORD</h1>

@@ -87,7 +87,6 @@
               <div class="box" style="background: #BDBDBD;">
                 <img class="profile" src="/images/tistory.JPG">
               </div>
-<%--              여기 어떻게 하면 좋을꽁?--%>
     <section class="about">
         <!-- 이름 -->
         <header class="name">
@@ -101,11 +100,10 @@
           <br><br>
           <!-- 소개글 -->
           <article class="main-introduction">
-            <p> introduction
-              안녕하세요! 노혜원입니다.<br>
-              맛집 탐방을 하고 싶어 시작했습니다.</p>
+              <p> introduction</p>
+              <p>안녕하세요! 노혜원입니다.<br></p>
             <br>
-            <p style="opacity: 1">앞으로 잘 부탁드립니다.♀️</p>
+            <p style="opacity: 1">앞으로 잘 부탁드립니다..️</p>
           </article>
           <br><br>
         </section>

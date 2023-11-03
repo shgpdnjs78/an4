@@ -19,7 +19,7 @@ import javax.sql.DataSource;
 @EnableScheduling
 @Configuration
 @MapperScan(value = "com.project.an.mapper"
-,sqlSessionFactoryRef = "sqlSessionFactorBean")
+,sqlSessionFactoryRef = "sqlSessionFactoryBean")
 @EnableTransactionManagement
 public class MyBatisConfig {
 

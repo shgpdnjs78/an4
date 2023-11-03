@@ -35,7 +35,8 @@
                                         </div>
 <%--                                                    <a href="login" class="btn btn-primary btn-user btn-block" onclick="return validateForm() && validateWithdrawal() && alert('탈퇴 되었습니다');">
             --%>
-                                        <a href="map" class="btn mt-4" onclick="return validateForm() && alert('로그인 성공')">로그인</a>
+                                        <a href="map" class="btn mt-4" onclick="return validateForm()">로그인</a>
+
 <%--                                        <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>--%>
                                     </div>
                                 </div>

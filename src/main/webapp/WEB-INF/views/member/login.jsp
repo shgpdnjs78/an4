@@ -26,11 +26,11 @@
                                     <div class="section text-center">
                                         <h4 class="mb-4 pb-3">로그인</h4>
                                         <div class="form-group">
-                                            <input type="email" id="email" class="form-style" placeholder="Your Email" autocomplete="off">
+                                            <input type="email" id="email" class="form-style" placeholder="이메일" autocomplete="off">
                                             <i class="input-icon uil uil-at"></i>
                                         </div>
                                         <div class="form-group mt-2">
-                                            <input type="password" id="password" class="form-style" placeholder="Your Password" autocomplete="off">
+                                            <input type="password" id="password" class="form-style" placeholder="비밀번호" autocomplete="off">
                                             <i class="input-icon uil uil-lock-alt"></i>
                                         </div>
 <%--                                                    <a href="login" class="btn btn-primary btn-user btn-block" onclick="return validateForm() && validateWithdrawal() && alert('탈퇴 되었습니다');">

@@ -72,9 +72,9 @@ public class MainController {
 
         return "/cs";
     }
-    @GetMapping("r11")@PostMapping
+    @GetMapping("rptlvks")@PostMapping
     public String root11() {
 
-        return "/main11";
+        return "/rptlvks";
     }
 }

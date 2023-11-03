@@ -81,7 +81,14 @@ function validateWithdrawal() {
 
     }
     else{
-        var newData =  JSON.parse([localStorageData]);
+        var newData =  JSON.parse(localStorageData);
+
+        for (var i = 0; i < newData.length; i++) {
+            if(username == newData[i].id){
+                alert("이미 있는 아이디 입니다.")
+                return false;
+            }
+        }
         newData.push(user);
         localStorage.setItem('USER', JSON.stringify(newData));
     }

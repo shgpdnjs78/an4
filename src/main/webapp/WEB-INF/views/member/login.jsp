@@ -16,7 +16,7 @@
         <div class="row full-height justify-content-center">
             <div class="col-12 text-center align-self-center py-5">
                 <div class="section pb-5 pt-5 pt-sm-2 text-center">
-                    <h6 class="mb-0 pb-3"><span>Log In </span><span>Sign Up</span></h6>
+                    <h6 class="mb-0 pb-3"><span>로그인 </span><span>회원가입</span></h6>
                     <input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
                     <label for="reg-log"></label>
                     <div class="card-3d-wrap mx-auto">
@@ -24,26 +24,28 @@
                             <div class="card-front">
                                 <div class="center-wrap">
                                     <div class="section text-center">
-                                        <h4 class="mb-4 pb-3">Log In</h4>
+                                        <h4 class="mb-4 pb-3">로그인</h4>
                                         <div class="form-group">
-                                            <input type="email" id="logemail" class="form-style" placeholder="Your Email" autocomplete="off">
+                                            <input type="email" id="email" class="form-style" placeholder="Your Email" autocomplete="off">
                                             <i class="input-icon uil uil-at"></i>
                                         </div>
                                         <div class="form-group mt-2">
-                                            <input type="password" id="logpass" class="form-style" placeholder="Your Password" autocomplete="off">
+                                            <input type="password" id="password" class="form-style" placeholder="Your Password" autocomplete="off">
                                             <i class="input-icon uil uil-lock-alt"></i>
                                         </div>
-                                        <a href="http://localhost/map" class="btn mt-4">submit</a>
-                                        <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>
+<%--                                                    <a href="login" class="btn btn-primary btn-user btn-block" onclick="return validateForm() && validateWithdrawal() && alert('탈퇴 되었습니다');">
+            --%>
+                                        <a href="map" class="btn mt-4" onclick="return validateForm() && alert('로그인 성공')">로그인</a>
+<%--                                        <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>--%>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-back">
                                 <div class="center-wrap">
                                     <div class="section text-center">
-                                        <h4 class="mb-4 pb-3">Sign Up</h4>
+                                        <h4 class="mb-4 pb-3">회원가입</h4>
                                         <div class="form-group">
-                                            <input type="text" name="logname" class="form-style" placeholder="Your Full Name" id="logname" autocomplete="off">
+                                            <input type="name" name="logname" class="form-style" placeholder="Your Full Name" id="logname" autocomplete="off">
                                             <i class="input-icon uil uil-user"></i>
                                         </div>
                                         <div class="form-group mt-2">
@@ -54,7 +56,7 @@
                                             <input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off">
                                             <i class="input-icon uil uil-lock-alt"></i>
                                         </div>
-                                        <a href="#" class="btn mt-4">submit</a>
+                                        <a href="login" class="btn mt-4"  onclick="return validateWithdrawal() && alert('회원 가입이 되었습니다')">회원가입</a>
                                     </div>
                                 </div>
                             </div>

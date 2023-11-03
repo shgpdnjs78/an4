@@ -11,5 +11,24 @@ label {
     font-size: 20px;
     margin-bottom: 20px;
 }
+.back-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px; /* Adjust the width of the circular button */
+    height: 100px; /* Adjust the height of the circular button */
+    border-radius: 50%; /* Makes the button circular */
+    background-color: rgba(220, 124, 218, 0.98); /* Button background color */
+    color: #ffffff; /* Text color */
+    text-decoration: none; /* Remove underline from the link */
+    font-weight: bold;
+    position: fixed;
+    bottom: 20px; /* Distance from the bottom */
+    right: 20px; /* Distance from the right */
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1); /* Optional: Add a box shadow */
+}
 
-/* 스타일을 원하는 대로 수정할 수 있습니다. */
+.back-button:hover {
+    background-color: rgba(220, 124, 218, 0.98); /* Change background color on hover */
+    cursor: pointer;
+}

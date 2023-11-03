@@ -17,3 +17,22 @@ submitButton.addEventListener('click', function() {
     // 선택된 항목을 콘솔에 출력
     console.log('선택된 항목:', selectedItems);
 });
+function validateForm() {
+    var username = document.getElementById("Inputpwd").value;
+    var password = document.getElementById("Inputpwd1").value;
+
+    if (username === "" || password === "") {
+        alert("아이디 또는 비밀번호를 입력해주세요.");
+        return false;
+    }
+    return true;
+}
+function validateWithdrawal() {
+    var reason = document.getElementById("reason").value;
+
+    if (!reason && !document.querySelectorAll('input[type="checkbox"]:checked').length) {
+        alert("아이디 또는 비밀번호를 입력하고 탈퇴 이유를 선택해주세요.");
+        return false;
+    }
+    return true;
+}

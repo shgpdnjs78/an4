@@ -56,26 +56,27 @@
             <div class="col-lg-6">
               <div class="p-5">
                 <div class="text-center">
-                  <h1 class="h4 text-gray-900 mb-2">Change password</h1>
-                  <p class="mb-4">enter your new password below</p>
+                  <h1 class="h4 text-gray-900 mb-2">비밀번호 변경</h1>
+                  <p class="mb-4">새로운 비밀번호를 입력해주세요</p>
                 </div>
-                <form class="user">
+                <form class="user" onsubmit="return validatePasswords()">
                   <div class="form-group">
-                    <input type="pwd" class="form-control form-control-user"
+                    <input type="password" class="form-control form-control-user"
                            id="exampleInputpwd" aria-describedby="pwdHelp"
-                           placeholder="Enter now password">
-                    <input type="pwd" class="form-control form-control-user"
-                           id="exampleInputpwd1" aria-describedby="pwdHelp"
-                           placeholder="Enter new password again">
-                    <input type="pwd" class="form-control form-control-user"
-                           id="exampleInputpwd2" aria-describedby="pwdHelp"
-                           placeholder="Enter new password again">
+                           placeholder="현재 비밀번호">
+                    <input type="password" class="form-control form-control-user"
+                           id="newPassword1" aria-describedby="pwdHelp"
+                           placeholder="새 비밀번호">
+                    <input type="password" class="form-control form-control-user"
+                           id="newPassword2" aria-describedby="pwdHelp"
+                           placeholder="새 비밀번호 확인">
                   </div>
-                  <a href="map" class="btn btn-primary btn-user btn-block">
-                    submit
-                  </a>
+                  <button type="submit" href="password" class="btn btn-primary btn-user btn-block" onclick="alert('비밀번호가 변경 되었습니다')">비밀변호 변경</button>
                 </form>
+
                 <hr>
+                <a href="map" class="back-button" id="go-back-button">뒤로가기</a>
+
               </div>
               </div>
             </div>

@@ -162,25 +162,105 @@ function initMap() {
                         '<img src="123.png" alt="이미지 설명">' + // 이미지 추가
                         '버스킹 하고 있어요' // Customize the content as needed
                 });
+                var additionalDescription = '나는 붕어'; // 초기 추가 설명
+
+                var infoWindowContent = document.createElement('div'); // infoWindow의 내용을 생성하는 div 요소
+                infoWindowContent.innerHTML = '<p>카테고리 선택</p>' +
+                    '<button onclick="selectCategory()">음식</button>' +
+                        '<button onclick="selectCategory()">공연</button>' +
+                        '<button class="red-button" onclick="selectCategory()">사고</button>' +
+                        '<button onclick="selectCategory()">기타</button>' +
+                        '<img src="123.png" alt="이미지 설명">' + // 이미지 추가
+                        '<p>추가설명</p><span id="additionalDescription">' + additionalDescription + '</span>' + // 초기 추가 설명을 포함한 요소
+                        '<button class="tnwjd-button3" id="editButton3">수정하기</button>'; // 수정 버튼 추가
+                infoWindowContent.querySelector('#editButton3').addEventListener('click', editDescription);
 
                 var infoWindow3 = new google.maps.InfoWindow({
-                    content: '<div><p>카테고리 선택</p>' +
-                        '<button onclick="selectCategory()">음식</button>' +
-                        '<button onclick="selectCategory()">공연</button>' +
-                        '<button class="red-button" onclick="selectCategory()">사고</button>' +
-                        '<button onclick="selectCategory()">기타</button>' +
-                        '<img src="123.png" alt="이미지 설명">' + // 이미지 추가
-                        '<p>추가설명</p>' + '공사중이라 길이 막혀요' // Customize the content as needed
+                    content: infoWindowContent
                 });
+
+                // InfoWindows 업데이트 함수
+                function updateInfoWindowContent(infoWindow, category, description) {
+                    var content = '<div><p>카테고리 선택</p>' +
+                        '<button class="' + category + '-button" onclick="selectCategory()">' + category + '</button>' +
+                        '<p>추가설명</p>' +
+                        '<img src="123.png" alt="이미지 설명">' + // 이미지 추가
+                        description; // 사용자가 입력한 추가 설명
+                    infoWindow.setContent(content);
+                }
+                var additionalDescription = '공사중이라 길이 막혀요'; // 초기 추가 설명
+
+                var infoWindowContent = document.createElement('div'); // infoWindow의 내용을 생성하는 div 요소
+                infoWindowContent.innerHTML = '<p>카테고리 선택</p>' +
+                    '<button onclick="selectCategory()">음식</button>' +
+                    '<button onclick="selectCategory()">공연</button>' +
+                    '<button class="red-button" onclick="selectCategory()">사고</button>' +
+                    '<button onclick="selectCategory()">기타</button>' +
+                    '<img src="123.png" alt="이미지 설명">' + // 이미지 추가
+                    '<p>추가설명</p><span id="additionalDescription">' + additionalDescription + '</span>' + // 초기 추가 설명을 포함한 요소
+                    '<button class="tnwjd-button" id="editButton">수정하기</button>' + // 수정 버튼 추가
+                    '<button class="delete-button" id="deleteButton">삭제하기</button>';
+
+// infoWindowContent 내부에 위치한 수정 버튼에 대한 클릭 이벤트를 추가
+                infoWindowContent.querySelector('#editButton').addEventListener('click', editDescription);
+
                 var infoWindow4 = new google.maps.InfoWindow({
-                    content: '<div><p>카테고리 선택</p>' +
-                        '<button onclick="selectCategory()">음식</button>' +
-                        '<button onclick="selectCategory()">공연</button>' +
-                        '<button class="red-button" onclick="selectCategory()">사고</button>' +
-                        '<button onclick="selectCategory()">기타</button>' +
-                        '<img src="123.png" alt="이미지 설명">' + // 이미지 추가
-                        '<p>추가설명</p>' + '공사중이라 길이 막혀요' // Customize the content as needed
+                    content: infoWindowContent
                 });
+
+// "수정하기" 버튼 클릭 시 호출되는 함수
+                // "수정하기" 버튼 클릭 시 호출되는 함수
+                function editDescription(infoWindow) {
+                    // 사용자로부터 새로운 설명을 입력받음
+                    var newDescription = prompt('새로운 추가 설명을 입력하세요', infoWindowContent.querySelector('#additionalDescription').textContent);
+
+                    if (newDescription !== null) {
+                        // 사용자가 입력한 내용을 infoWindow3에 업데이트
+                        infoWindowContent.querySelector('#additionalDescription').textContent = newDescription;
+                        // infoWindow 업데이트
+                        infoWindow.setContent(infoWindowContent);
+                    }
+                }
+
+                // InfoWindow에 수정 버튼 클릭 이벤트 추가 (마커마다 해당 이벤트를 연결해야 함)
+                document.getElementById('editButton').addEventListener('click', function() {
+                    editDescription(infoWindow4); // 첫 번째 마커에 대한 InfoWindow 업데이트
+                });
+                document.getElementById('editButton1').addEventListener('click', function() {
+                    editDescription(infoWindow2); // 두 번째 마커에 대한 InfoWindow 업데이트
+                });
+                document.getElementById('editButton2').addEventListener('click', function() {
+                    editDescription(infoWindow3); // 세 번째 마커에 대한 InfoWindow 업데이트
+                });
+                    // "수정하기" 버튼에 클릭 이벤트 추가
+                document.getElementById('editButton3').addEventListener('click', function() {
+                    editDescription(infoWindow1); // 세 번째 마커에 대한 InfoWindow 업데이트
+                });
+
+// "수정하기" 버튼에 클릭 이벤트 추가
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.getElementById('editButton').addEventListener('click', editDescription);
+                });
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.getElementById('editButton1').addEventListener('click', editDescription);
+                });
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.getElementById('editButton2').addEventListener('click', editDescription);
+                });
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.getElementById('editButton3').addEventListener('click', editDescription);
+                });
+// InfoWindow에 삭제 버튼 클릭 이벤트 추가 (마커마다 해당 이벤트를 연결해야 함)
+                document.getElementById('deleteButton').addEventListener('click', function() {
+                    // Call a function to handle marker deletion
+                    deleteMarker(marker4);
+                });
+
+                function deleteMarker(marker) {
+                    // Remove the marker from the map
+                    marker.setMap(null);
+                    // You can also remove other related data or perform additional tasks here
+                }
                 // 정보 창을 마커 위에 표시
                 infowindow.open(map, marker);
             });
@@ -255,4 +335,12 @@ document.getElementById('submit-button').addEventListener('click', function() {
 //     id="my-page-button" , className="custom1-button"
 //     window.location.href = "http://localhost/r4";
 // }
+// Get the button element by its id
+var BackButton = document.getElementById('back-button');
+
+// Add event listener for the "뒤로가기" button
+goBackButton.addEventListener('click', function() {
+    // Use the history object to navigate back to the previous page
+    window.history.back();
+});
 

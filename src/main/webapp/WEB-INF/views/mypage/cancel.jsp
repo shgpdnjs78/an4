@@ -46,7 +46,7 @@
         <div class="col-lg-6">
             <div class="p-5">
                 <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-2">계정 탈퇴</h1>
+                    <h1 class="h4 text-gray-900 mb-2">회원 탈퇴</h1>
                     <p class="mb-4">계정을 탈퇴하는 이유를 체크해 주세요</p>
         <%-- 어떤 점이 불편하셨나요? 고객님의 의견을 반영하여 더 좋은 모습으로 찾아 뵙기 위해 노력하겠습니다.--%>
                 </div>
@@ -85,20 +85,20 @@
                        placeholder="사유를 적어주세요">
 
                 <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-2">Inter ID & PASSWORD</h1>
+                    <h1 class="h4 text-gray-900 mb-2">아이디와 비밀번호를 입력해주세요</h1>
 <%--정확한 본인확인을 위해 비밀번호를 입력해 주세요.--%>
                     <form class="user">
                         <div class="form-group">
                             <input type="id" class="form-control form-control-user"
-                                   id="exampleInputpwd" aria-describedby="pwdHelp"
+                                   id="Inputpwd" aria-describedby="pwdHelp"
                                    placeholder="ID를 입력해주세요">
                             <input type="pwd" class="form-control form-control-user"
-                                   id="exampleInputpwd1" aria-describedby="pwdHelp"
+                                   id="Inputpwd1" aria-describedby="pwdHelp"
                                    placeholder="Password를 입력해주세요">
                         </div>
-                        <a href="login" class="btn btn-primary btn-user btn-block">
-                            탈퇴하기
-                        </a>
+                        <a href="login" class="btn btn-primary btn-user btn-block" onclick="return validateForm() && validateWithdrawal() && alert('탈퇴 되었습니다');">
+                            탈퇴하기 </a>
+                        <a href="map" class="back-button" id="go-back-button">뒤로가기</a>
                     </form>
 
                 <hr>

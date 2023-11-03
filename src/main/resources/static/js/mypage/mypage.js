@@ -24,15 +24,41 @@ function updatePhoneNumber() {
     document.getElementById("phoneNumber").innerText = `📞${newPhoneNumber}`;
     document.getElementById("phoneNumber").style.display = "block";
     document.getElementById("phoneNumberForm").style.display = "none";
-}
 
+    return true;
+}
+function handlePhoneNumberUpdate() {
+    // 이메일 업데이트 함수 호출하여 이메일 업데이트 수행
+    const isPhoneNumberUpdated = updatePhoneNumber();
+
+    // 이메일이 성공적으로 업데이트된 경우에만 알람 메시지 표시
+    if (isPhoneNumberUpdated) {
+        alert('수정 되었습니다');
+    }
+}
 function updateEmail() {
     // 입력한 이메일을 가져와서 출력 영역에 업데이트하고 입력 폼을 숨김
     const newEmail = document.getElementById("newEmail").value;
     document.getElementById("email").innerText = `📧${newEmail}`;
     document.getElementById("email").style.display = "block";
     document.getElementById("emailForm").style.display = "none";
+
+    return true;
 }
+function handleEmailUpdate() {
+    // 이메일 업데이트 함수 호출하여 이메일 업데이트 수행
+    const isEmailUpdated = updateEmail();
+
+    // 이메일이 성공적으로 업데이트된 경우에만 알람 메시지 표시
+    if (isEmailUpdated) {
+        alert('수정 되었습니다');
+    }
+}
+
+// 버튼 클릭 이벤트에 handleEmailUpdate() 함수를 연결
+document.getElementById("PhoneNumberUpdateButton").addEventListener("click", handlePhoneNumberUpdate);
+
+document.getElementById("emailUpdateButton").addEventListener("click", handleEmailUpdate);
 
 // 파일 선택 시 미리보기 기능 구현
 const fileInput = document.querySelector('input[type="file"]');

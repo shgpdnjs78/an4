@@ -57,8 +57,9 @@
                         <p id="currentTime" onclick="displayCurrentTime()">Click to see the current time</p>
                         <p>마커보기</p>
                         <p>삭제 여부 : o</p>
-
                     </div>
+                    <a href="mymarker" class="back-button" id="go-back-button">뒤로가기</a>
+
                 </div>
             </div>
     </div>

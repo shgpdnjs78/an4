@@ -70,12 +70,13 @@
 
                 <div id="phoneNumberForm" style="display: none;">
                     <input type="text" id="newPhoneNumber">
-                    <button onclick="updatePhoneNumber()">Confirm</button>
+                    <button onclick="updatePhoneNumber() && alert('수정 되었습니다')">수정</button>
                 </div>
                 <!-- 이메일 입력 폼 -->
                 <div id="emailForm" style="display: none;">
                     <input type="email" id="newEmail">
-                    <button onclick="updateEmail()">Confirm</button>
+                    <button onclick="updateEmail() && alert('수정 되었습니다')" >수정</button>
+
                 </div>
 
               <form id="profileImageForm" enctype="multipart/form-data">
@@ -126,8 +127,9 @@
 
   </div>
   <!-- /.row -->
+      <a href="map" class="back-button" id="go-back-button">뒤로가기</a>
 
-</div>
+  </div>
 <!-- /.container -->
 
 <!-- Footer -->

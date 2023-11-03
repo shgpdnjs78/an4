@@ -56,15 +56,16 @@
                     <form class="user">
                         <div class="form-group">
                             <input type="title" class="form-control form-control-user"
-                                   id="exampleInputpwd" aria-describedby="pwdHelp"
+                                   id="title" aria-describedby="pwdHelp"
                                    placeholder="제목을 적어주세요">
                             <input type="content" class="form-control form-control-user"
-                                   id="exampleInputpwd1" aria-describedby="pwdHelp"
+                                   id="content" aria-describedby="pwdHelp"
                                    placeholder="내용을 적어주세요">
                         </div>
-                        <a href="login" class="btn btn-primary btn-user btn-block">
-                            보내기
-                        </a>
+                        <a href="login" class="btn btn-primary btn-user btn-block" onclick="return validateForm() && alert('문의 사항이 접수 되었습니다. 48시간 내로 메일로 답변 드리겠습니다.')">
+                            보내기 </a>
+                        <a href="map" class="back-button" id="go-back-button"  >뒤로가기</a>
+
                     </form>
 
                     <hr>

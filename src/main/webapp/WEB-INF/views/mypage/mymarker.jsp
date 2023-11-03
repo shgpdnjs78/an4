@@ -181,6 +181,7 @@
 
 </div>
 <!-- /.row -->
+<a href="map" class="back-button" id="go-back-button">뒤로가기</a>
 
 </div>
 <!-- /.container -->

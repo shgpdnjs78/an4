@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.an.mapper.UserMapper">
+    <select id="selectUserInfo" resultType="com.project.an.vo.UserInfo">
+        SELECT email,name
+        FROM user
+        WHERE email = #{id} AND pw = #{pw}
+    </select>
+</mapper>

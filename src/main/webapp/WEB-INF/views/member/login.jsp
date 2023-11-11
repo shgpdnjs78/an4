@@ -42,24 +42,26 @@
                                 </div>
                             </div>
                             <div class="card-back">
+                                <form action="/login" method="post">
                                 <div class="center-wrap">
                                     <div class="section text-center">
                                         <h4 class="mb-4 pb-3">회원가입</h4>
                                         <div class="form-group">
-                                            <input type="name" name="logname" class="form-style" placeholder="Your Full Name" id="logname" autocomplete="off">
+                                            <input type="text" name="name" class="form-style" placeholder="Your Full Name" id="name" autocomplete="off">
                                             <i class="input-icon uil uil-user"></i>
                                         </div>
                                         <div class="form-group mt-2">
-                                            <input type="email" name="logemail" class="form-style" placeholder="Your Email" id="logemail" autocomplete="off">
+                                            <input type="email" name="email" class="form-style" placeholder="Your Email" id="joinEmail" autocomplete="off">
                                             <i class="input-icon uil uil-at"></i>
                                         </div>
                                         <div class="form-group mt-2">
-                                            <input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off">
+                                            <input type="password" name=password" class="form-style" placeholder="Your Password" id="joinPass" autocomplete="off">
                                             <i class="input-icon uil uil-lock-alt"></i>
                                         </div>
-                                        <a href="login" class="btn mt-4"  onclick="return validateWithdrawal() && alert('회원 가입이 되었습니다')">회원가입</a>
+                                        <a href="login" class="btn mt-4"  onclick="return validateWithdrawal()">회원가입</a>
                                     </div>
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </div>

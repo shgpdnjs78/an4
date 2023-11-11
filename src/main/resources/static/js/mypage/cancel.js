@@ -18,10 +18,10 @@ submitButton.addEventListener('click', function() {
     console.log('선택된 항목:', selectedItems);
 });
 function validateForm() {
-    var username = document.getElementById("Inputpwd").value;
+    var id = document.getElementById("Inputemail").value;
     var password = document.getElementById("Inputpwd1").value;
 
-    if (username === "" || password === "") {
+    if (id === "" || password === "") {
         alert("아이디 또는 비밀번호를 입력해주세요.");
         return false;
     }

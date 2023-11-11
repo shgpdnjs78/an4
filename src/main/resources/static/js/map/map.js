@@ -1,4 +1,3 @@
-
 var map;
 var marker;
 var infowindow;
@@ -18,7 +17,7 @@ $('.custom1-button').on('click', function(){
     //계속 새로 호출?
     // 잉? 지금은 display 1 block ?
     //코드 숨기기
-    var marker1s;
+    var Fmarker1s;
     marker1s = document.querySelectorAll('div[title="Marker 1"]');
     marker1s.forEach(function(obj,index){
         console.log(obj,index);
@@ -68,16 +67,24 @@ function initMap() {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
+            localStorage.setItem("lat",userLocation.lat);
+            localStorage.setItem("lng",userLocation.lng);
+            console.log(position.coords.latitude);
 
             // 현재 위치를 지도의 중심으로 설정
             map.setCenter(userLocation);
 
-            // 마커 추가 (선택 사항)
+            // 마커 추가
             var marker = new google.maps.Marker({
                 position: userLocation,
                 map: map,
                 title: '현재 위치'
             });
+            console.log(position.coords.longitude);
+
+            // var longitude;
+            // var latitude
+
 // Create markers
             var marker1 = new google.maps.Marker({
                 position: { lat: 35.893653, lng: 128.620130 }, // Replace with your desired coordinates
@@ -106,6 +113,7 @@ function initMap() {
                 icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
             });
 
+
             dlfeks = marker4;
             console.log(dlfeks);
             // 마커 클릭 이벤트 처리
@@ -131,13 +139,13 @@ function initMap() {
 
                 var infowindow = new google.maps.InfoWindow({
                     content: '<div><p>카테고리 선택</p>' +
-                        '<button class="gray-button" onclick="selectCategory(this, \'pink-button\')">음식</button>' +
-                        '<button class="gray-button" onclick="selectCategory(this, \'yellow-button\')">공연</button>' +
-                        '<button class="gray-button" onclick="selectCategory(this, \'red-button\')">사고</button>' +
-                        '<button class="gray-button" onclick="selectCategory(this, \'green-button\')">기타</button>' +
+                        '<button class="gray-button" onclick="selectCategory(\'음식\')">음식</button>' +
+                        '<button class="gray-button" onclick="selectCategory(\'공연\')">공연</button>' +
+                        '<button class="gray-button" onclick="selectCategory(\'사고\')">사고</button>' +
+                        '<button class="gray-button" onclick="selectCategory(\'기타\')">기타</button>' +
                         '<p>추가설명</p>' +
                         '<input type="text" name="extra" class="form-style" placeholder="추가설명을 입력하세요">' +
-                        '<button id="cam-button" class="custom8-button" onclick="window.location.href=\'http://localhost/photo\'">사진찍기</button>'
+                        '<button id="cam-button" class="custom8-button" onclick="return getPhoto()">사진찍기</button>'
                 });
 
                 // Create InfoWindows for each marker
@@ -192,10 +200,10 @@ function initMap() {
 
                 var infoWindowContent = document.createElement('div'); // infoWindow의 내용을 생성하는 div 요소
                 infoWindowContent.innerHTML = '<p>카테고리 선택</p>' +
-                    '<button onclick="selectCategory()">음식</button>' +
-                    '<button onclick="selectCategory()">공연</button>' +
-                    '<button class="red-button" onclick="selectCategory()">사고</button>' +
-                    '<button onclick="selectCategory()">기타</button>' +
+                    '<button onclick="selectCategory(\'음식\')">음식</button>' +
+                    '<button onclick="selectCategory(\'공연\')">공연</button>' +
+                    '<button class="red-button" onclick="selectCategory(\'사고\')">사고</button>' +
+                    '<button onclick="selectCategory(\'기타\')">기타</button>' +
                     '<img src="123.png" alt="이미지 설명">' + // 이미지 추가
                     '<p>추가설명</p><span id="additionalDescription">' + additionalDescription + '</span>' + // 초기 추가 설명을 포함한 요소
                     '<button class="tnwjd-button" id="editButton">수정하기</button>' + // 수정 버튼 추가
@@ -264,7 +272,7 @@ function initMap() {
                 // 정보 창을 마커 위에 표시
                 infowindow.open(map, marker);
             });
-        }, function() {
+            }, function() {
             // 위치 정보를 가져오는 데 실패한 경우의 처리 (예: 권한 거부)
             console.error('현재 위치를 가져오는 데 실패하였습니다.');
         });
@@ -273,15 +281,57 @@ function initMap() {
         console.error('Geolocation을 지원하지 않습니다.');
     }
 }
+
+function getPhoto()  {
+    //종류버튼, 추가설명, 위치
+    var type = localStorage.getItem("category");//selectCategory
+    var answer = document.querySelector('input[name=extra]'   ).value;
+    // var answer = "제발되라";
+    var longitude =  parseFloat(localStorage.getItem("lng"));
+    var latitude = parseFloat(localStorage.getItem("lat"));
+    console.log(type,answer,longitude,latitude);
+
+    let location_check = true;
+    $.ajax({
+        url: "/user/map",
+        data: {
+            "type" : type,
+            "answer" : answer,
+            "lng" : longitude,
+            "lat" : latitude
+        },
+        type: "POST",
+        dataType:"json",
+        async:false,
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.error('Ajax 요청 오류:', textStatus, errorThrown);
+            location_check = false;
+        }
+
+
+    }).done(function(rs){
+        console.log(rs);
+        if(!rs.status){
+            // console.error('Error:', error);
+            alert(rs.msg);
+            location_check=false;
+        }
+    });
+    console.log("여기까지")
+    return location_check;
+}
+
 // 정보 창 닫기 함수
 function selectCategory(category) {
     // 여기에서 선택한 카테고리에 대한 작업을 수행합니다.
     console.log('선택한 카테고리: ' + category);
 
-
+    localStorage.setItem("category",category);
     // 정보 창을 닫습니다.
     // closeInfoWindow();
-}function selectCategory(button, newClass) {
+}
+/*
+function selectCategory(button, newClass) {
     // Remove the "gray-button" class from all buttons
     var buttons = document.querySelectorAll('.gray-button');
     buttons.forEach(function (btn) {
@@ -309,11 +359,35 @@ function selectCategory(category) {
     // Add the new class to the clicked button
     button.classList.add(newClass);
 }
-
+*/
 // "등록하기" 버튼 클릭 이벤트 처리
 document.getElementById('register-button').addEventListener('click', function() {
     // 입력 상자를 나타내는 요소를 가져옴
     var inputContainer = document.getElementById('input-container');
+
+    // $.ajax({
+    //     url: "/user/map",
+    //     data: {
+    //         "longitude" : position.coords.longitude,
+    //         "latitude" : position.coords.latitude
+    //     },
+    //     type: "POST",
+    //     dataType:"json",
+    //     async:false,
+    //     error: function (error) {
+    //         // 에러 발생 시의 동작
+    //         console.error('Error:', error);
+    //         alert(error);
+    //
+    //     }
+    //
+    // }).done(function(rs){
+    //     console.log(rs);
+    //     if(!rs.status){
+    //         console.error('Error:', error);
+    //         alert(rs.msg);
+    //     }
+    // });
 
     // 입력 상자를 표시 (CSS로 display 속성을 변경)
     inputContainer.style.display = 'block';

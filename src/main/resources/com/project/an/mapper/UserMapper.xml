@@ -1,9 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.an.mapper.UserMapper">
+    <!-- Select existing user info -->
     <select id="selectUserInfo" resultType="com.project.an.vo.UserInfo">
-        SELECT email,name
+        SELECT email, name
         FROM user
         WHERE email = #{id} AND pw = #{pw}
     </select>
+
+    <!-- Insert new user info -->
+    <insert id="insertUser" parameterType="com.project.an.vo.UserInfo" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user (email, pw, name)
+        VALUES ( #{id}, #{pw}, #{name})
+    </insert>
+
+    <select id="checkDuplicateUser" parameterType="String" resultType="com.project.an.vo.UserInfo">
+        SELECT * FROM user WHERE email = #{id}
+    </select>
+
+<!--    map-->
+    <insert id="location" parameterType="com.project.an.vo.MapInfo">
+        INSERT INTO map (type, answer, lng, lat, id)
+        VALUES ( #{type}, #{answer}, #{lng,jdbcType=VARCHAR}, #{lat,jdbcType=VARCHAR} , #{id})
+    </insert>
+
+    <select id="checkUser" parameterType="String" resultType="com.project.an.vo.MapInfo">
+        SELECT * FROM map WHERE answer = #{answer}
+    </select>
+
+    <select id="locationSaveProcess" resultType="com.project.an.vo.MapInfo">
+        SELECT lng, lat, answer, type
+        FROM map
+        WHERE lng = #{lng} AND lat = #{lat} AND answer = #{answer} AND type = #{type}
+    </select>
+
 </mapper>
+

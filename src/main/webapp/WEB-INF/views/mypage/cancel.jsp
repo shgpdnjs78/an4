@@ -90,7 +90,7 @@
                     <form class="user">
                         <div class="form-group">
                             <input type="id" class="form-control form-control-user"
-                                   id="Inputpwd" aria-describedby="pwdHelp"
+                                   id="Inputemail" aria-describedby="pwdHelp"
                                    placeholder="ID를 입력해주세요">
                             <input type="pwd" class="form-control form-control-user"
                                    id="Inputpwd1" aria-describedby="pwdHelp"

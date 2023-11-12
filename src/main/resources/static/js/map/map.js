@@ -150,6 +150,27 @@ function initMap() {
                 //     window.location.href = "map";
                 // }
                 });
+                var markerPosition = Cookies.get('markerPosition');
+                localStorage.setItem('markerPosition', JSON.stringify(marker.getPosition()));
+
+
+                if (markerPosition) {
+                    // 쿠키에 저장된 마커 위치가 있을 경우 해당 위치로 마커 생성
+                    marker = new google.maps.Marker({
+                        position: JSON.parse(markerPosition),
+                        map: map,
+                        title: '저장된 마커',
+                        icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
+                    });
+                } else {
+                    // 쿠키에 저장된 마커 위치가 없을 경우 초기 위치로 마커 생성
+                    marker = new google.maps.Marker({
+                        position: userLocation,
+                        map: map,
+                        title: '초기 마커',
+                        icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
+                    });
+                }
                 var newMarker = new google.maps.Marker({
                     position: userLocation, // 사용자 위치로 설정
                     map: map,

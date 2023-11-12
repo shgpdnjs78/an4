@@ -80,6 +80,7 @@ function initMap() {
                 map: map,
                 title: '현재 위치'
             });
+
             console.log(position.coords.longitude);
 
             // var longitude;
@@ -113,7 +114,6 @@ function initMap() {
                 icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
             });
 
-
             dlfeks = marker4;
             console.log(dlfeks);
             // 마커 클릭 이벤트 처리
@@ -138,16 +138,28 @@ function initMap() {
                 });
 
                 var infowindow = new google.maps.InfoWindow({
-                    content: '<div><p>카테고리 선택</p>' +
+                    content:innerHTML = '<p>카테고리 선택</p>' +
                         '<button class="gray-button" onclick="selectCategory(\'음식\')">음식</button>' +
                         '<button class="gray-button" onclick="selectCategory(\'공연\')">공연</button>' +
                         '<button class="gray-button" onclick="selectCategory(\'사고\')">사고</button>' +
                         '<button class="gray-button" onclick="selectCategory(\'기타\')">기타</button>' +
                         '<p>추가설명</p>' +
                         '<input type="text" name="extra" class="form-style" placeholder="추가설명을 입력하세요">' +
-                        '<button id="cam-button" class="custom8-button" onclick="return getPhoto()">사진찍기</button>'
+                        '<button id="cam-button" class="custom8-button" onclick="return getPhoto() ">사진찍기</button>'
+                //     function redirectToMap() {
+                //     window.location.href = "map";
+                // }
                 });
+                var newMarker = new google.maps.Marker({
+                    position: userLocation, // 사용자 위치로 설정
+                    map: map,
+                    title: '새로운 마커',
+                    icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png' // 사용자 정의 아이콘 URL로 설정
+                });
+                // 마커 클릭 이벤트 처리
+                newMarker.addListener('click', function () {
 
+                });
                 // Create InfoWindows for each marker
                 var infoWindow1 = new google.maps.InfoWindow({
                     content: '<div><p>카테고리 선택</p>' +
@@ -156,7 +168,7 @@ function initMap() {
                         '<button onclick="selectCategory()">사고</button>' +
                         '<button onclick="selectCategory()">기타</button>' +
                         '<p>추가설명</p>' +
-                        '<img src="123.png" alt="이미지 설명">' + // 이미지 추가
+                        '<img src="123.jpg" alt="이미지 설명" class="markerPink">' + // 이미지 추가
                         '음식 붕어빵 가게 있어요' // Customize the content as needed
                 });
 
@@ -290,7 +302,7 @@ function getPhoto()  {
     var longitude =  parseFloat(localStorage.getItem("lng"));
     var latitude = parseFloat(localStorage.getItem("lat"));
     console.log(type,answer,longitude,latitude);
-
+    window.location.href = 'http://localhost/photo';
     let location_check = true;
     $.ajax({
         url: "/user/map",
@@ -306,6 +318,16 @@ function getPhoto()  {
         error: function (jqXHR, textStatus, errorThrown) {
             console.error('Ajax 요청 오류:', textStatus, errorThrown);
             location_check = false;
+            // 새로운 마커를 생성합니다.
+            var newMarker = new google.maps.Marker({
+                position: userLocation, // 필요에 따라 위치를 변경하세요
+                map: map,
+                title: '새로운 마커',
+                icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png' // 사용자 정의 아이콘 URL로 설정
+            });
+
+            // 여기서 추가적인 로직을 수행할 수 있습니다. 예를 들어 새로운 마커에 대한 인포 윈도우를 열 수 있습니다.
+            infowindow.open(map, newMarker);
         }
 
 

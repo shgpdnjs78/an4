@@ -1,11 +1,12 @@
-let isSnapshotTaken = false;
+let isSnapshotTaken = false, borderRadius;
 
 window.onload = function () {
     Webcam.set({
-        width: 640,
-        height: 480,
+        width: 480,
+        height: 360,
         image_format: 'jpg',
-        jpeg_quality: 100
+        jpeg_quality: 100,
+        img : borderRadius = '1.25rem'
     });
     Webcam.attach('#my_camera');
 }
@@ -17,9 +18,9 @@ function take_snapshot() {
             // create an image element and set the source to the snapshot
             var img = document.createElement('img');
             img.src = data_uri;
-            img.width = 640; // 이미지 가로 크기 설정
-            img.height = 480; // 이미지 세로 크기 설정
-
+            img.width = 480; // 이미지 가로 크기 설정
+            img.height = 360; // 이미지 세로 크기 설정
+            img: borderRadius  = '1.25rem';
             // append the image to the "results" div to display it
             document.getElementById('results').appendChild(img);
 

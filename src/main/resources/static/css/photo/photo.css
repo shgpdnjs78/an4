@@ -99,11 +99,46 @@
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
 }
-#my_camera{
-    width: 960px;
-    height: 720px;
-    border: 1px solid black;
+body {
+    background-color: #FBD85D;
+    background-image: url("cloud.jpg");
 }
+#my_camera, #video, #results {
+    width: 480px;
+    height: 360px;
+    border:5px solid #e8e8e8;
+    border-radius: 1.25rem;
+    margin-right: 1px; /* 각 요소 사이의 여백을 조절합니다. */
+
+}
+.camera-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    border-radius: 1.25rem;
+}
+
+#take-photo, #next-button,#re-button {
+    margin-right: 10px;
+    background-color: #f0f0f0;
+    color: #1d1d1b;
+    width: 10%;
+    height: 2.5rem;
+    line-height: 2.375rem;
+    padding: 0 1.25rem;
+    font-size: 0.875rem;
+    border-radius: 1rem;
+    position: relative;
+    box-sizing: border-box;
+    vertical-align: middle;
+    text-align: center;
+}
+.button {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
 .back-button {
     display: flex;
     align-items: center;

@@ -49,6 +49,17 @@
     -webkit-overflow-scrolling: touch;
 }
 
+body {
+    background-color: #FBD85D;
+    background-image: url("123.jpg");
+}
+.markerPink {
+    width: 200px; /* 이미지 가로 크기 설정 */
+    height: 200px; /* 이미지 세로 크기 설정 */
+    border-radius: 1.25rem; /* 이미지 모서리 둥글게 설정 */
+    margin: 10px; /* 이미지 주변 여백 설정 */
+    background-image: url('123.jpg')
+}
 #map {
     height: 100%;
     width: 100%;

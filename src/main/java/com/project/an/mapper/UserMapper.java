@@ -24,6 +24,7 @@ public interface UserMapper {
     //위치 정보 사용
     MapInfo locationSaveProcess(@Param("type") String type, @Param("answer") String answer, @Param("lat") String lat, @Param("lng") String lng);
 
+    UserInfo userCheck(@Param("id") String id);
 }
 
 

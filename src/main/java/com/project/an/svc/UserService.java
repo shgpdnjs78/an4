@@ -4,16 +4,20 @@ import com.project.an.mapper.UserMapper;
 import com.project.an.vo.MapInfo;
 import com.project.an.vo.UserInfo;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.apache.catalina.Session;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+
 @Service //비지니스 로직이 있으며 저장소 계층을 사용
 public class UserService {
     @Autowired //스프링에게 해당 필드를 자동으로 주입하도록 지시 userMapper 필드에 넣음
     UserMapper userMapper;
+    private HttpServletResponse response;
 
     //로그인
     public boolean loginProcess(String id, String pw, HttpServletRequest request) {
@@ -62,4 +66,22 @@ public class UserService {
         return user == null || user.getName().equals("") ? false : true;
 //        return user != null && !user.getName().isEmpty();
     }
+    public boolean userCheck(String id, HttpServletRequest request) throws IOException {
+        HttpSession session = request.getSession();
+        //사용자 정보 조회
+        UserInfo user = userMapper.userCheck(id);
+
+        if (user == null || user.getName().equals("")) {
+            // If the user is not logged in, redirect to the login page
+            response.sendRedirect(request.getContextPath() + "http://localhost/login"); // Replace "/login" with the actual login page URL
+            return false;
+        }
+
+        // session에 사용자 정보 설정
+        session.setAttribute("user",user);
+        System.out.println(id);
+
+        return true;
+    }
+
 }

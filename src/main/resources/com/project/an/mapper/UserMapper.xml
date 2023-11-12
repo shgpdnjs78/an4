@@ -34,5 +34,11 @@
         WHERE lng = #{lng} AND lat = #{lat} AND answer = #{answer} AND type = #{type}
     </select>
 
+    <select id="userCheck" resultType="com.project.an.vo.UserInfo">
+        SELECT *
+        FROM user
+        WHERE email = #{id}
+    </select>
+
 </mapper>
 

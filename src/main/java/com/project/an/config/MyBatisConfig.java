@@ -38,4 +38,5 @@ public class MyBatisConfig {
         sessionFactory.setMapperLocations(res);
         return sessionFactory.getObject();
     }
+
 }

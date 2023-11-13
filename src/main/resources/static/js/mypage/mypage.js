@@ -6,11 +6,11 @@ src="vendor/bootstrap/js/bootstrap.bundle.min.js"
 // 정보공유
 var getparam = 123;
 console.log(getparam)
-function editPhoneNumber() {
-    // 전화번호 출력 영역을 숨기고 입력 폼을 보이게 함
-    document.getElementById("phoneNumber").style.display = "none";
-    document.getElementById("phoneNumberForm").style.display = "block";
-}
+// function editPhoneNumber() {
+//     // 전화번호 출력 영역을 숨기고 입력 폼을 보이게 함
+//     document.getElementById("phoneNumber").style.display = "none";
+//     document.getElementById("phoneNumberForm").style.display = "block";
+// }
 
 function editEmail() {
     // 이메일 출력 영역을 숨기고 입력 폼을 보이게 함
@@ -18,15 +18,15 @@ function editEmail() {
     document.getElementById("emailForm").style.display = "block";
 }
 
-function updatePhoneNumber() {
-    // 입력한 전화번호를 가져와서 출력 영역에 업데이트하고 입력 폼을 숨김
-    const newPhoneNumber = document.getElementById("newPhoneNumber").value;
-    document.getElementById("phoneNumber").innerText = `📞${newPhoneNumber}`;
-    document.getElementById("phoneNumber").style.display = "block";
-    document.getElementById("phoneNumberForm").style.display = "none";
-
-    return true;
-}
+// function updatePhoneNumber() {
+//     // 입력한 전화번호를 가져와서 출력 영역에 업데이트하고 입력 폼을 숨김
+//     const newPhoneNumber = document.getElementById("newPhoneNumber").value;
+//     document.getElementById("phoneNumber").innerText = `📞${newPhoneNumber}`;
+//     document.getElementById("phoneNumber").style.display = "block";
+//     document.getElementById("phoneNumberForm").style.display = "none";
+//
+//     return true;
+// }
 function handlePhoneNumberUpdate() {
     // 이메일 업데이트 함수 호출하여 이메일 업데이트 수행
     const isPhoneNumberUpdated = updatePhoneNumber();
@@ -44,6 +44,30 @@ function updateEmail() {
     document.getElementById("emailForm").style.display = "none";
 
     return true;
+
+    // $.ajax({
+    //     url: "/user/mypage",
+    //     data: {
+    //         "id" : id,
+    //     },
+    //     type: "POST",
+    //     dataType:"json",
+    //     async:false,
+    //     error: function (error) {
+    //         // 에러 발생 시의 동작
+    //         console.error('Error:', error);
+    //         alert(error);
+    //         login_check = false;
+    //     }
+    //
+    // }).done(function(rs){
+    //     console.log(rs);
+    //     if(!rs.status){
+    //         user_check = false;
+    //         alert(rs.msg);
+    //     }
+    // });
+    // return user_check;
 }
 function handleEmailUpdate() {
     // 이메일 업데이트 함수 호출하여 이메일 업데이트 수행
@@ -56,7 +80,7 @@ function handleEmailUpdate() {
 }
 
 // 버튼 클릭 이벤트에 handleEmailUpdate() 함수를 연결
-document.getElementById("PhoneNumberUpdateButton").addEventListener("click", handlePhoneNumberUpdate);
+//document.getElementById("PhoneNumberUpdateButton").addEventListener("click", handlePhoneNumberUpdate);
 
 document.getElementById("emailUpdateButton").addEventListener("click", handleEmailUpdate);
 

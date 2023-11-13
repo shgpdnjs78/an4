@@ -3,6 +3,7 @@ package com.project.an.dto;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.project.an.vo.UserInfo;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -51,7 +52,6 @@ public class JsonResultDTO {
         }
         return json;
     }
-
 
 
         }

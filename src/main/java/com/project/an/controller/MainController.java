@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
 public class MainController {
     @Autowired
- //   private final MemberService memberService;
+    //   private final MemberService memberService;
 //같이 묶어도 되는것
 // showingRegisterMarker , showingRegisterMarkerMap , endEvent
     // login form
@@ -40,7 +40,7 @@ public class MainController {
         return "/mypage";
     }
     //mypage find password
-    @GetMapping("password")@PostMapping
+    @GetMapping("Password")@PostMapping
     public String findPassword() {
 
         return "/password";

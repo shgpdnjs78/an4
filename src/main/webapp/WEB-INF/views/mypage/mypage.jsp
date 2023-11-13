@@ -65,13 +65,13 @@
                 <!-- 이메일 출력 영역 -->
 <%--                <p id="email">📧shgpdnjs78@gmail.com</p>--%>
                 <!-- 전화번호 입력 폼 -->
-                <button class="list-group-item" onclick="editPhoneNumber()">Edit Phone Number</button>
+<%--                <button class="list-group-item" onclick="editPhoneNumber()">Edit Phone Number</button>--%>
                 <button class="list-group-item" onclick="editEmail()">Edit Email</button>
 
-                <div id="phoneNumberForm" style="display: none;">
-                    <input type="text" id="newPhoneNumber">
-                    <button onclick="updatePhoneNumber() && alert('수정 되었습니다')">수정</button>
-                </div>
+<%--                <div id="phoneNumberForm" style="display: none;">--%>
+<%--                    <input type="text" id="newPhoneNumber">--%>
+<%--                    <button onclick="updatePhoneNumber() && alert('수정 되었습니다')">수정</button>--%>
+<%--                </div>--%>
                 <!-- 이메일 입력 폼 -->
                 <div id="emailForm" style="display: none;">
                     <input type="email" id="newEmail">
@@ -94,7 +94,7 @@
             <p>&nbsp<span style="color: #2B3856;">HYEWON NOH</span></p>
             <!-- 연락처 -->
             <div class="contacts">
-                <p id="phoneNumber">📞+(82)10-2385-6794</p>
+<%--                <p id="phoneNumber">📞+(82)10-2385-6794</p>--%>
                 <p id="email">📧shgpdnjs78@gmail.com</p>
                 </div>
           </header>

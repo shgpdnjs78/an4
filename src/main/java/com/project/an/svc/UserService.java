@@ -6,8 +6,6 @@ import com.project.an.vo.UserInfo;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import org.apache.catalina.Session;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -66,22 +64,34 @@ public class UserService {
         return user == null || user.getName().equals("") ? false : true;
 //        return user != null && !user.getName().isEmpty();
     }
-    public boolean userCheck(String id, HttpServletRequest request) throws IOException {
+    //회원 정보 없으면 로그인으로 돌아가는 것
+//    public boolean userCheck(String id, HttpServletRequest request) throws IOException {
+//        HttpSession session = request.getSession();
+//        //사용자 정보 조회
+//        UserInfo user = userMapper.userCheck(id);
+//
+//        if (user == null || user.getName().equals("")) {
+//            // If the user is not logged in, redirect to the login page
+//            response.sendRedirect(request.getContextPath() + "http://localhost/login"); // Replace "/login" with the actual login page URL
+//            return false;
+//        }
+//
+//        // session에 사용자 정보 설정
+//        session.setAttribute("user",user);
+//        System.out.println(id);
+//
+//        return true;
+//    }
+//
+    public boolean locationRegisterProcess(String type, String answer, String lat, String lng,HttpServletRequest request) {
         HttpSession session = request.getSession();
         //사용자 정보 조회
-        UserInfo user = userMapper.userCheck(id);
-
-        if (user == null || user.getName().equals("")) {
-            // If the user is not logged in, redirect to the login page
-            response.sendRedirect(request.getContextPath() + "http://localhost/login"); // Replace "/login" with the actual login page URL
-            return false;
-        }
-
+        MapInfo user = userMapper.locationRegisterProcess(type,answer,lat,lng);
         // session에 사용자 정보 설정
-        session.setAttribute("user",user);
-        System.out.println(id);
+        MapInfo mapInfo = (MapInfo) session.getAttribute("map");
+        System.out.println(type + answer + lat + lng);
 
-        return true;
+        return user == null || user.getName().equals("") ? false : true;
     }
 
 }

@@ -360,12 +360,11 @@ function getPhoto()  {
         }
 
 
-    }).done(function(rs){
+    }).done(function (rs) {
         console.log(rs);
-        if(!rs.status){
-            // console.error('Error:', error);
+        if (!rs.status) {
             alert(rs.msg);
-            location_check=false;
+            location_check = false;
         }
     });
     console.log("여기까지")

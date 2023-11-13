@@ -7,7 +7,8 @@
 </div>
 <div class = "button" >
  <input type="button" value="Take Snapshot"  id= "take-photo" onClick="take_snapshot()">
-     <button id="next-button" className="next-button">다음</button>
-     <button class="re-button" className="rext-button" id="re-button" >다시 촬영</button>
+     <button id="next-button" class="next-button">다음</button>
+     <button class="re-button" class="rext-button" id="re-button" >다시 촬영</button>
     <a href="map" class="back-button" id="go-back-button">뒤로가기</a>
+
 </div>

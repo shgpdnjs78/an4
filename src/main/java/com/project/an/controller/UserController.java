@@ -1,23 +1,21 @@
 package com.project.an.controller;
 
-import ch.qos.logback.core.model.Model;
 import com.project.an.dto.JsonResultDTO;
 import com.project.an.svc.UserService;
-import com.project.an.vo.UserInfo;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
+import java.util.Map;
 
-@RestController //@Controller에 @ResponseBody가 추가된 것 , Json 형태로 객체 데이터를 반환
-@MapperScan(value = "com.project.an.mapper",sqlSessionFactoryRef = "sqlSessionFactoryBean") //매퍼를 하나씩 등록하는게 아닌 페키지 경로를 지정하여 이하 위치에있는 인터페이스들은 전부 맵퍼로 사용
-@RequestMapping(value = "/user", method = {RequestMethod.GET, RequestMethod.POST}) //들어온 요청을 특정 메서드와 매핑하기 위해 사용
+@RestController
+@MapperScan(value = "com.project.an.mapper",sqlSessionFactoryRef = "sqlSessionFactoryBean")
+@RequestMapping(value = "/user", method = {RequestMethod.GET, RequestMethod.POST})
 public class UserController {
-    @Autowired //의존관계 주입시 사용하는 어노테이션(Annotation)이며, 의존 객체의 타입에 해당하는 빈(Bean)을 찾아 주입
+    @Autowired
     UserService userService;
     private String type;
     private String answer;
@@ -27,13 +25,11 @@ public class UserController {
     @GetMapping("login")
     @PostMapping
     public String login(HttpServletRequest request, @RequestParam("id") String id, @RequestParam("pw") String pw) {
-        //HttpServletRequest request : 웹브라우저 사용자인 클라이언트로부터 서버로 요청이 들어오면 서버에서는 HttpServletRequest를 생성하며, 요청정보에 있는 패스로 매핑된 서블릿에게 전달
-        //@RequestParam : 어노테이션의 괄호 안의 경우 전달인자 이름(실제 값을 표시)
         //json 리턴을 위한 객체
         JsonResultDTO jsonResultDTO = new JsonResultDTO(false, "process fail", null);
         //로그인 처리부분(로그인 정보가 일치하는 계정의 존재유무 파악)
         boolean login_check = userService.loginProcess(id, pw, request);
-        //정상일 경우 상태값 & 결과메시지 변경
+        //정상일경우 상태값 & 결과메시지 변경
         if (login_check) jsonResultDTO.setSuccess();
 
         //json 리턴
@@ -53,17 +49,15 @@ public class UserController {
 //            jsonResultDTO.setMsg("이미 존재하는 아이디입니다.");
 //            return jsonResultDTO;
 //        }
-        // 회원가입 처리
         boolean register_check = userService.registerProcess(id, name, pw);
-        // 정상일 경우 상태값 및 결과 메시지
         if (register_check) {
             jsonResultDTO.setSuccess();
         }
-        // JSON 리턴
+
         return jsonResultDTO;
     }
 
-    //지도 마커 정보 요청
+
     @GetMapping("map")
     @PostMapping
     public JsonResultDTO map(HttpServletRequest request, @RequestParam("type") String type, @RequestParam("answer") String answer,
@@ -72,7 +66,6 @@ public class UserController {
         this.answer = answer;
         this.lat = lat;
         this.lng = lng;
-        //json 리턴을 위한 객체
         JsonResultDTO jsonResultDTO = new JsonResultDTO(false, "위치정보 없음", null);
 
         boolean location_check = userService.locationProcess(type, answer, lat, lng, request);
@@ -83,8 +76,6 @@ public class UserController {
 
         return jsonResultDTO;
     }
-
-    @GetMapping("mapsave")
     @PostMapping
     public String mapsave(@RequestParam("type") String type,
                           @RequestParam("answer") String answer,
@@ -98,28 +89,31 @@ public class UserController {
         JsonResultDTO jsonResultDTO = new JsonResultDTO(false, "process fail", null);
         //로그인 처리부분(로그인 정보가 일치하는 계정의 존재유무 파악)
         boolean location_check = userService.locationSaveProcess(type, answer, lat, lng);
-        //정상일 경우 상태값 & 결과메시지 변경
+        //정상일경우 상태값 & 결과메시지 변경
         if (location_check) jsonResultDTO.setSuccess();
 
         //json 리턴
         return jsonResultDTO.finalResult();
     }
 
-    @GetMapping("/")
-    public String userCheck(HttpServletRequest request, HttpServletResponse response, @RequestParam("id") String id) throws IOException {
+    @GetMapping("photo")
+    @PostMapping
+    public String photo(HttpServletRequest request, @RequestBody Map<String, String> data) {
+        String type = data.get("type");
+        String answer = data.get("answer");
+        String lat = data.get("lat");
+        String lng = data.get("lng");
 
-        JsonResultDTO jsonResultDTO = new JsonResultDTO(false, "process fail", null);
+            JsonResultDTO jsonResultDTO = new JsonResultDTO(false, "process fail", null);
+            boolean locationRegister_check  = userService.locationRegisterProcess(data.get("type"), data.get("answer"), data.get("lat"), data.get("lng"), request);
 
-        boolean user_check = userService.userCheck(id, request);
-
-        if (user_check) {
-            jsonResultDTO.setSuccess();
-            // 성공적인 경우 추가 로직이 필요한 경우 여기에 추가
-        } else {
-            // 로그인 페이지로 리디렉션
-            return "http://localhost/login";
+            if (locationRegister_check) {
+                jsonResultDTO.setSuccess();
+            }
+            return jsonResultDTO.finalResult(); // 또는 다른 적절한 응답값
         }
-        return jsonResultDTO.finalResult();
     }
-}
+
+
+
 

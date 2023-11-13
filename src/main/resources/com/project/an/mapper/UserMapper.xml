@@ -40,11 +40,27 @@
         WHERE email = #{id}
     </select>
 
-    <update id="alwjd" parameterType="com.project.an.vo.UserInfo">
-        UPDATE map
-        SET type = #{type}, answer = #{answer}
-        WHERE type = #{type} AND answer = #{answer}
-    </update>
+
+<!--    <update id="alwjd" parameterType="com.project.an.vo.UserInfo">-->
+<!--        UPDATE map-->
+<!--        SET type = #{type}, answer = #{answer}-->
+<!--        WHERE type = #{type} AND answer = #{answer}-->
+<!--    </update>-->
 <!--마커 정보 수정-->
+
+<!--    <select id="findByMemberEmail" parameterType="String" resultType="member">-->
+<!--        select * from member_table where memberEmail=#{loginEmail}-->
+<!--    </select>-->
+<!--    <update id="update" parameterType="member">-->
+<!--        update member_table set memberAge=#{memberAge}, memberMobile=#{memberMobile}-->
+<!--        where id=#{id}-->
+<!--    </update>-->
+
+        <select id="locationRegisterProcess" resultType="com.project.an.vo.MapInfo">
+            <!-- 여기에 적절한 SQL 쿼리를 작성해주세요 -->
+            SELECT * FROM map
+            WHERE type = #{type} AND answer = #{answer} AND lat = #{lat} AND lng = #{lng}
+        </select>
+    <!--   열면오류남-->
 </mapper>
 

@@ -176,6 +176,7 @@ function initMap() {
                     map: map,
                     title: '새로운 마커',
                     icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png' // 사용자 정의 아이콘 URL로 설정
+
                 });
                 // 마커 클릭 이벤트 처리
                 newMarker.addListener('click', function () {
@@ -322,7 +323,14 @@ function getPhoto()  {
     // var answer = "제발되라";
     var longitude =  parseFloat(localStorage.getItem("lng"));
     var latitude = parseFloat(localStorage.getItem("lat"));
-    console.log(type,answer,longitude,latitude);
+
+    //localStorage.setItem('snapshotTaken', JSON.stringify(isSnapshotTaken));
+
+    console.log("Type:", type);
+    console.log("Answer:", answer);
+    console.log("Longitude:", longitude);
+    console.log("Latitude:", latitude);
+
     window.location.href = 'http://localhost/photo';
     let location_check = true;
     $.ajax({
@@ -448,10 +456,6 @@ document.getElementById('submit-button').addEventListener('click', function() {
     document.getElementById('input-container').style.display = 'none';
 });
 
-// function redirectToR4() {
-//     id="my-page-button" , className="custom1-button"
-//     window.location.href = "http://localhost/r4";
-// }
 // Get the button element by its id
 var BackButton = document.getElementById('back-button');
 

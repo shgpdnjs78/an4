@@ -40,5 +40,11 @@
         WHERE email = #{id}
     </select>
 
+    <update id="alwjd" parameterType="com.project.an.vo.UserInfo">
+        UPDATE map
+        SET type = #{type}, answer = #{answer}
+        WHERE type = #{type} AND answer = #{answer}
+    </update>
+<!--마커 정보 수정-->
 </mapper>
 

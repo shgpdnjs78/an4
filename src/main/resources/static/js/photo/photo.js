@@ -24,11 +24,14 @@ function take_snapshot() {
             // append the image to the "results" div to display it
             document.getElementById('results').appendChild(img);
 
+            imageData = data_uri;
+            sessionStorage.setItem('snapshot', imageData);
+
+            isSnapshotTaken = true;
             // 이미지를 한 번만 추가하도록 플래그 설정
             isSnapshotTaken = true;
         });
     }
-
     // 버튼 요소 가져오기
     var nextButton = document.getElementById("next-button");
 
@@ -36,6 +39,9 @@ function take_snapshot() {
     nextButton.addEventListener("click", function () {
         // 새로운 URL로 이동
         window.location.href = "map";
+       // history.go(-1);
+        sessionStorage.setItem('snapshot', imageData);
+        return true;
     });
 
     var reButton = document.getElementById("re-button");

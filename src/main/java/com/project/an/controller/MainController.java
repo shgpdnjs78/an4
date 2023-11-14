@@ -40,7 +40,7 @@ public class MainController {
         return "/mypage";
     }
     //mypage find password
-    @GetMapping("Password")@PostMapping
+    @GetMapping("password")@PostMapping
     public String findPassword() {
 
         return "/password";

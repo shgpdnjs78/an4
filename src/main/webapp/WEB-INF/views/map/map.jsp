@@ -15,7 +15,7 @@
     <%--            <button id="cam-button" class="custom7-button" onclick="window.location.href='http://localhost/r3'">사진찍기</button>--%>
 
 <%--     <div id="infoWindow4" style="display: none;">--%>
-<%--         <input type="email" id="newEmail">--%>
+<%--         <input type="email" id="FnewEmail">--%>
 <%--             <button onClick="updateEmail()">Confirm</button>--%>
 <%--     </div>--%>
     <button class="tnwjd-button" id="editButton" onclick="alert('수정 되었습니다')">수정하기</button>

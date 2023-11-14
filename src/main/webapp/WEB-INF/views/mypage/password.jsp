@@ -38,7 +38,7 @@
           <a href="password" class="list-group-item">비밀번호 변경</a>
           <a href="mymarker" class="list-group-item">등록한 마커</a>
           <a href="cancel" class="list-group-item">회원 탈퇴</a>
-          <a href="cs" class="list-group-item">문의사항</a>
+          <a href="cs" class="list-group-item">1:1 상담 문의</a>
         </div>
 
       </div>
@@ -59,7 +59,7 @@
                   <h1 class="h4 text-gray-900 mb-2">비밀번호 변경</h1>
                   <p class="mb-4">새로운 비밀번호를 입력해주세요</p>
                 </div>
-                <form class="user" onsubmit="return validatePasswords()">
+                <form class="user" onsubmit="return validatePassword()">
                   <div class="form-group">
                     <input type="password" class="form-control form-control-user"
                            id="exampleInputpwd" aria-describedby="pwdHelp"

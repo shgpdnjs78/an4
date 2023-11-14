@@ -1,13 +1,7 @@
-var map;
-var marker;
-var infowindow;
-var clickCount = 0; // Variable to keep track of button clicks
-var originalClass;
-var custom_fitter1;
-var custom_fitter2;
-var custom_fitter3;
-var custom_fitter4;
+src="https://code.jquery.com/jquery-3.6.4.min.js"
 
+var map;
+var infowindow;
 
 var filter_category = '';  //어떠한 버튼을 누르면 , 이 filter_category를 category_type의 몇번째 인덱스로 바꿔 줄 것이다.
 var category_type = ['','음식','공연','사고','기타'];
@@ -16,63 +10,104 @@ var category_type_color = ['','pink','yellow','red','green'];
 //카테고리 타입에 색깔도 같이 지정해준다. 색깔을 바꾸면, 다르게 지정될것이다.
 // 대신 여기 넣고 뺄때 밑의 dot_color 함수에서도 case 넣고 빼줘야 함.  최소 카테고리 한개는 남겨둘 것! 한개도 없을때의 예외처리는 안했으니까...
 
-function dot_color(type){
+    //DB정보 셀렉트 해서 db_data를 구성
+    //AJAX 불러서 MYSQL에서 받아온 정보를 DB_DATA에 저장한다.
+    //DB_DATA는 배열이다. 배열의 각 인덱스에는 DB에서 받아온 정보를 저장한다.
+    //DB_DATA의 각 인덱스는 마커를 의미한다.
+    // 사용자 1이 등록한 마커를 사용자 2가 보는 방식
+
+var DB_DATA =
+    //DB데이타를 임시로  강제로 설정해본다.  추후에는 다 지우고 DB의 정보 받는것으로 바뀌어야 한다.
+    [
+        {
+            //배열의 0번지,  편의성을 위해 비워놓자.
+        },
+        {  //marker1의 정보를 담았다.
+            id : 'hyewon',  //올린 사람의 아이디
+            type : '음식',  //DB에서 받아온 카테고리
+            lat : 35.893653,  //DB에서 받아온 위도
+            lng : 128.620130,  //DB에서 받아온 경도
+            title : 'Marker 1',  //title은 for문으로 받아온 i로 다른 title을 설정해줄 수 있다.
+            icon : dot_color('음식'), //위의 dot_color 함수 설명 참고 이것은 파라미터에따라 icon~~.png 를 리턴한다.
+
+            img : '123.png',        //이미지는 원래는 (로컬이 아닌) 서버에 저장해둔것을 가져와야 한다. 그래야 남이 올린 사진도 볼 수 있다. (DB랑은 다른개념)
+            //일단 지금은 로컬의 이미지를 가져오면 되므로, 이 이미지의 경로는 직접 지정할 수 있도록 (ex : './image/123.png' )
+            answer : '음식 붕어빵 가게 있어요',  //DB에서 받아온 누군가가 써놓은 설명
+        },
+        { //marker2의 정보를 담았다
+            id : 'joosub',  //올린 사람의 아이디
+            type : '공연',
+            lat : 35.900000,  //DB에서 받아온 위도
+            lng : 128.620130,  //DB에서 받아온 경도
+            title : 'Marker 2',  //title은 for문으로 받아온 i로 다른 title을 설정해줄 수 있다.
+            icon : dot_color('공연'), //위의 dot_color 함수 설명 참고 이것은 파라미터에따라 icon~~.png 를 리턴한다.
+
+            img : '123.png',        //이미지는 원래는 (로컬이 아닌) 서버에 저장해둔것을 가져와야 한다. 그래야 남이 올린 사진도 볼 수 있다. (DB랑은 다른개념)
+            //일단 지금은 로컬의 이미지를 가져오면 되므로, 이 이미지의 경로는 직접 지정할 수 있도록 (ex : './image/123.png' )
+            answer : '버스킹 하고 있어요', //DB에서 받아온 누군가가 써놓은 설명
+        },
+        { //marker3의 정보를 담았다
+            id : 'taehwan',  //올린 사람의 아이디
+            type : '사고',
+            lat : 35.893653,  //DB에서 받아온 위도
+            lng : 128.630000,  //DB에서 받아온 경도
+            title : 'Marker 3',  //title은 for문으로 받아온 i로 다른 title을 설정해줄 수 있다.
+            icon : dot_color('사고'), //위의 dot_color 함수 설명 참고 이것은 파라미터에따라 icon~~.png 를 리턴한다.
+
+            img : '123.png',        //이미지는 원래는 (로컬이 아닌) 서버에 저장해둔것을 가져와야 한다. 그래야 남이 올린 사진도 볼 수 있다. (DB랑은 다른개념)
+            //일단 지금은 로컬의 이미지를 가져오면 되므로, 이 이미지의 경로는 직접 지정할 수 있도록 (ex : './image/123.png' )
+            answer : '나는 붕어', //DB에서 받아온 누군가가 써놓은 설명
+        },
+        { //marker4의 정보를 담았다
+            id : 'sungjin',  //올린 사람의 아이디
+            type : '기타',
+            lat : 35.833312,  //DB에서 받아온 위도
+            lng : 128.749879,  //DB에서 받아온 경도
+            title : 'Marker 4',  //title은 for문으로 받아온 i로 다른 title을 설정해줄 수 있다.
+            icon : dot_color('기타'), //위의 dot_color 함수 설명 참고 이것은 파라미터에따라 icon~~.png 를 리턴한다.
+
+            img : '123.png',        //이미지는 원래는 (로컬이 아닌) 서버에 저장해둔것을 가져와야 한다. 그래야 남이 올린 사진도 볼 수 있다. (DB랑은 다른개념)
+            //일단 지금은 로컬의 이미지를 가져오면 되므로, 이 이미지의 경로는 직접 지정할 수 있도록 (ex : './image/123.png' )
+            answer : '공사중이라 길이 막혀요', //DB에서 받아온 누군가가 써놓은 설명
+        }, { //marker4의 정보를 담았다
+        id : 'qwer',  //올린 사람의 아이디
+        type : '사고',
+        lat : 35.8332,  //DB에서 받아온 위도
+        lng : 128.7679,  //DB에서 받아온 경도
+        title : 'Marker 5',  //title은 for문으로 받아온 i로 다른 title을 설정해줄 수 있다.
+        icon : dot_color('사고'), //위의 dot_color 함수 설명 참고 이것은 파라미터에따라 icon~~.png 를 리턴한다.
+
+        img : '123.png',        //이미지는 원래는 (로컬이 아닌) 서버에 저장해둔것을 가져와야 한다. 그래야 남이 올린 사진도 볼 수 있다. (DB랑은 다른개념)
+        //일단 지금은 로컬의 이미지를 가져오면 되므로, 이 이미지의 경로는 직접 지정할 수 있도록 (ex : './image/123.png' )
+        answer : '아', //DB에서 받아온 누군가가 써놓은 설명
+    }
+    ];
+    DB_DATA.push(newMarker);
+    //DB_DATA에 새로운 마커를 추가한다.
+// 로컬 스토리지에 현재 상태 저장
+    localStorage.setItem('markers', JSON.stringify(DB_DATA));
+
+// 이후 작업 (예: 지도에 마커 표시 등)
+    displayMarkersOnMap();
+
+function dot_color(type) {
     //dot의 색깔을 정해보자
     //type이 음식,공연,사고,기타  중 뭐냐에 따라 다른 색깔을 리턴한다.
     //이것으로 icon dot의 색깔도 바꿔줄 수 있다.
-    switch(type){
-        case category_type[1] : return 'http://maps.google.com/mapfiles/ms/icons/'+category_type_color[1]+'-dot.png';
-        case category_type[2] : return 'http://maps.google.com/mapfiles/ms/icons/'+category_type_color[2]+'-dot.png';
-        case category_type[3] : return 'http://maps.google.com/mapfiles/ms/icons/'+category_type_color[3]+'-dot.png';
-        case category_type[4] : return 'http://maps.google.com/mapfiles/ms/icons/'+category_type_color[4]+'-dot.png';
+    switch (type) {
+        case category_type[1] :
+            return 'http://maps.google.com/mapfiles/ms/icons/' + category_type_color[1] + '-dot.png';
+        case category_type[2] :
+            return 'http://maps.google.com/mapfiles/ms/icons/' + category_type_color[2] + '-dot.png';
+        case category_type[3] :
+            return 'http://maps.google.com/mapfiles/ms/icons/' + category_type_color[3] + '-dot.png';
+        case category_type[4] :
+            return 'http://maps.google.com/mapfiles/ms/icons/' + category_type_color[4] + '-dot.png';
         //음식이 뭐냐에 따라!!                                                         색깔이 바뀔 것이다!!
+        default:
+            return ''; // 예외 처리: 지정된 카테고리가 없을 경우 빈 문자열 반환
     }
 }
-
-
-custom_fitter1 = document.getElementsByClassName('custom1-button');
-$('.custom1-button').on('click', function(){
-    //클릭시 fitter1의 마커만 나온다
-    //페이지를 지우고 해당 핀의 내용만 남겨
-    //계속 새로 호출?
-    // 잉? 지금은 display 1 block ?
-    //코드 숨기기
-    var Fmarker1s;
-    marker1s = document.querySelectorAll('div[title="Marker 1"]');
-    marker1s.forEach(function(obj,index){
-        console.log(obj,index);
-    })
-    //each?
-    // 마커의 클래스를 불러오는 코드랑 같대유 ,변수에 저장?
-
-//     버튼 1 클릭 시 버튼의 정보가 나온다
-//     만약 버튼이 내 위치 근처에 있을시 버튼의 정보가 유효한지 알림이 뜬다
-//     yes를 클릭 시 마커는 유지되고 No 클릭 시 마커는 사라지게 된다.
-//     버튼의 정보는 카테고리(사건, 음식 , 공연, 기타) 버튼 중 하나와 추가설명 , 사진이 등록되어있다.
-//     등록한 날짜와 시간은 ui에 보이지 않는다.
-//     등록한 마커의 유효 시간은 6시간이다.
-
-//     등록할 시
-
-});
-//커스텀버튼2
-//커스텀버튼3
-//커스텀버튼4
-
-// 마커의 아이콘 이미지를 설정할 수 있는 객체
-
-// marker1에 사용자 정의 아이콘 적용
-// marker1.setIcon(customIcon1);
-
-// // marker2에 사용자 정의 아이콘 적용
-// marker2.setIcon(customIcon2);
-
-// // marker3에 사용자 정의 아이콘 적용
-// marker3.setIcon(customIcon3);
-
-// // marker4에 사용자 정의 아이콘 적용
-// marker4.setIcon(customIcon4);
-
 function initMap() {
     // 맵 초기화 및 구성
     map = new google.maps.Map(document.getElementById('map'), {
@@ -114,7 +149,7 @@ function initMap() {
                     string+  //여기서 버튼이 만들어진다
                     '<p>추가설명</p>' +
                     '<input type="text" name="extra" class="form-style" placeholder="추가설명을 입력하세요">' +
-                    '<button id="cam-button" class="custom8-button" onclick="return getPhoto()">사진찍기</button>'
+                    '<button id="cam-button" class="custom8-button" onclick="return handleGetPhoto()">사진찍기</button>'
             });
 
             // 마커 클릭 이벤트 처리
@@ -132,62 +167,6 @@ function initMap() {
             // 그것을 구현하는것은 아래에 완성 한다.
 
 
-            var DB_DATA =
-                //DB데이타를 임시로  강제로 설정해본다.  추후에는 다 지우고 DB의 정보 받는것으로 바뀌어야 한다.
-                [
-                    {
-                        //배열의 0번지,  편의성을 위해 비워놓자.
-                    },
-                    {  //marker1의 정보를 담았다.
-                        id : 'hyewon',  //올린 사람의 아이디
-                        type : '음식',  //DB에서 받아온 카테고리
-                        lat : 35.893653,  //DB에서 받아온 위도
-                        lng : 128.620130,  //DB에서 받아온 경도
-                        title : 'Marker 1',  //title은 for문으로 받아온 i로 다른 title을 설정해줄 수 있다.
-                        icon : dot_color('음식'), //위의 dot_color 함수 설명 참고 이것은 파라미터에따라 icon~~.png 를 리턴한다.
-
-                        img : '123.png',        //이미지는 원래는 (로컬이 아닌) 서버에 저장해둔것을 가져와야 한다. 그래야 남이 올린 사진도 볼 수 있다. (DB랑은 다른개념)
-                        //일단 지금은 로컬의 이미지를 가져오면 되므로, 이 이미지의 경로는 직접 지정할 수 있도록 (ex : './image/123.png' )
-                        explain : '음식 붕어빵 가게 있어요',  //DB에서 받아온 누군가가 써놓은 설명
-                    },
-                    { //marker2의 정보를 담았다
-                        id : 'joosub',  //올린 사람의 아이디
-                        type : '공연',
-                        lat : 35.900000,  //DB에서 받아온 위도
-                        lng : 128.620130,  //DB에서 받아온 경도
-                        title : 'Marker 2',  //title은 for문으로 받아온 i로 다른 title을 설정해줄 수 있다.
-                        icon : dot_color('공연'), //위의 dot_color 함수 설명 참고 이것은 파라미터에따라 icon~~.png 를 리턴한다.
-
-                        img : '123.png',        //이미지는 원래는 (로컬이 아닌) 서버에 저장해둔것을 가져와야 한다. 그래야 남이 올린 사진도 볼 수 있다. (DB랑은 다른개념)
-                        //일단 지금은 로컬의 이미지를 가져오면 되므로, 이 이미지의 경로는 직접 지정할 수 있도록 (ex : './image/123.png' )
-                        explain : '버스킹 하고 있어요', //DB에서 받아온 누군가가 써놓은 설명
-                    },
-                    { //marker3의 정보를 담았다
-                        id : 'taehwan',  //올린 사람의 아이디
-                        type : '사고',
-                        lat : 35.893653,  //DB에서 받아온 위도
-                        lng : 128.630000,  //DB에서 받아온 경도
-                        title : 'Marker 3',  //title은 for문으로 받아온 i로 다른 title을 설정해줄 수 있다.
-                        icon : dot_color('사고'), //위의 dot_color 함수 설명 참고 이것은 파라미터에따라 icon~~.png 를 리턴한다.
-
-                        img : '123.png',        //이미지는 원래는 (로컬이 아닌) 서버에 저장해둔것을 가져와야 한다. 그래야 남이 올린 사진도 볼 수 있다. (DB랑은 다른개념)
-                        //일단 지금은 로컬의 이미지를 가져오면 되므로, 이 이미지의 경로는 직접 지정할 수 있도록 (ex : './image/123.png' )
-                        explain : '나는 붕어', //DB에서 받아온 누군가가 써놓은 설명
-                    },
-                    { //marker4의 정보를 담았다
-                        id : 'sungjin',  //올린 사람의 아이디
-                        type : '기타',
-                        lat : 35.833312,  //DB에서 받아온 위도
-                        lng : 128.749879,  //DB에서 받아온 경도
-                        title : 'Marker 4',  //title은 for문으로 받아온 i로 다른 title을 설정해줄 수 있다.
-                        icon : dot_color('기타'), //위의 dot_color 함수 설명 참고 이것은 파라미터에따라 icon~~.png 를 리턴한다.
-
-                        img : '123.png',        //이미지는 원래는 (로컬이 아닌) 서버에 저장해둔것을 가져와야 한다. 그래야 남이 올린 사진도 볼 수 있다. (DB랑은 다른개념)
-                        //일단 지금은 로컬의 이미지를 가져오면 되므로, 이 이미지의 경로는 직접 지정할 수 있도록 (ex : './image/123.png' )
-                        explain : '공사중이라 길이 막혀요', //DB에서 받아온 누군가가 써놓은 설명
-                    },
-                ];
-
 
 
             //DB의 정보를 받았으니, 이제 그것을 펼쳐서 마커들을 그려준다.
@@ -195,65 +174,50 @@ function initMap() {
             for (let i = 1; i < DB_DATA.length; i++) {
                 (function(i){
 
-                    if(DB_DATA[i].type !== filter_category && filter_category !== '')
-                    {
-                        //특정 보고싶은 카테고리가 설정되어있다면, 그 카테고리 말고는 보여주지 않는다.
-                        //즉 여기는 아무것도안한다.
-                    }
-                    else
-                    {
+                    if (filter_category !== '' && DB_DATA[i].type !== filter_category) {
 
+                        // 특정 카테고리가 선택되었고, 마커 유형이 필터 카테고리와 일치하지 않으면
+                        // 이 카테고리에 대해 아무 작업도 수행하지 않음
+                    }
+                    else {
+                        //마커의 위치
                         var DB_marker = new google.maps.Marker({
-                            position: {  //포지션에는
-                                lat: DB_DATA[i].lat,  //위의 DB_DATA 배열의 i번째 인덱스의 lat을 가져온다
-                                lng: DB_DATA[i].lng   //위의 DB_DATA 배열의 i번째 인덱스의 lng을 가져온다
+                            position: {
+                                lat: DB_DATA[i].lat,
+                                lng: DB_DATA[i].lng
                             },
                             map: map,
-                            title: DB_DATA[i].title, //위의 DB_DATA 배열의 i번째 인덱스의 title을 가져온다
-                            icon:  DB_DATA[i].icon,  //위의 DB_DATA 배열의 i번째 인덱스의 icon을 가져온다
-
+                            title: DB_DATA[i].title,
+                            icon:  DB_DATA[i].icon,
                         });
 
                         var DB_string = '';
-                        for (let j = 1; j < category_type.length; j++) {  //for문안에 또 for문이다. 여기는 j다!! 헷갈리지말것
-
-                            //음식,공연,사고,기타  의 버튼이,위의 category_type 카테고리배열에 담긴만큼 생성 될것이다!!!
-                            //그리고 특별히 카테고리에 따라 여기는 버튼색깔이 달라질것이다.
-                            if(i == j)  //카테고리 i와 동일한 버튼j 이라면..
-                            {
+                        for (let j = 1; j < category_type.length; j++) {
+                            if(DB_DATA[i].type == category_type[j]) {
                                 DB_string += "<button class='"+category_type_color[j]+"-button' onclick='selectCategory(\'"+category_type[j]+"\')'>"+category_type[j]+"</button>";
                             }
-                            else  //아니면..
-                            {
+                            else {
                                 DB_string += "<button onclick='selectCategory(\'"+category_type[j]+"\')'>"+category_type[j]+"</button>";
                             }
                         }
 
-
                         var edit_btn = '';
                         var delete_btn = '';
 
-
-
-                        if(DB_DATA[i].id == 'hyewon')  //아이디는 로컬스토리지에 저장된 아이디를 가져올것!  localstorage.getItem([USER]) ?? 이건가.. 여튼 이것을 활용할것!
-                        {
-
-                            // //본인 아이디와 같다면.. 수정하기 버튼도 넣자.
+                        if(DB_DATA[i].id == 'hyewon') {
                             edit_btn = '<button class="tnwjd-button'+i+'" id="editButton'+i+'">수정하기</button>';
-                            // // 삭제하기 버튼도 넣을거면 이 뒤로 + 해서 넣으면 됨
                             delete_btn = '<button class="tkrwp-button'+i+'" id="deleteButton'+i+'">삭제하기</button>';
                         }
 
                         var DB_infoWindow = new google.maps.InfoWindow({
                             content: '<div><p>카테고리 선택</p>' +
-                                DB_string+  //여기서 버튼이 만들어진다
+                                DB_string +
                                 '<span id="additionalDescription'+i+'">추가설명</span>' +
-                                '<img src="'+DB_DATA[i].img+'" alt="이미지 설명">' +  //위의 DB_DATA 배열의 i번째 인덱스의 img을 가져온다
-                                DB_DATA[i].explain+  //위의 DB_DATA 배열의 i번째 인덱스의 explain을 가져온다
-                                edit_btn+  //수정하기가 있다면 (본인이 올린것이라면) 들어간다,
-                                delete_btn  //삭제하기가 있다면 들어간다,   만약 본인 말고도 다른사람도 보이게 하고싶다면?  그건 방법을 알아서 생각해보도록! 조건문에서 빼면 되겠지?
+                                '<img src="'+DB_DATA[i].img+'" alt="이미지 설명">' +
+                                DB_DATA[i].answer +  // 수정된 부분
+                                edit_btn +
+                                delete_btn
                         });
-                        // console.log(DB_infoWindow.content)
 
                         (function(){
 
@@ -276,11 +240,7 @@ function initMap() {
 
                 })(i);
 
-
-
-                //여기까지의 작업을 위의 DB_DATA의 길이만큼 반복한다.
             }
-
 
 
         }, function() {
@@ -311,6 +271,7 @@ function editDescription(infoWindow,i) {
         console.log( document.querySelector('#additionalDescription'+i).textContent)
         // infoWindow 업데이트
         infoWindow.setContent(infoWindow.content);
+        DB_DATA[i].answer = newDescription;
     }
 }
 // '삭제하기' 버튼 클릭 시 호출되는 함수
@@ -326,45 +287,168 @@ function deleteMarker(marker) {
 }
 
 //현재위치에서 마커를 등록하기 위한 사진찍기 버튼을 눌렀을때의 함수
-function getPhoto()  {
+// function getPhoto()  {
+//     //종류버튼, 추가설명, 위치
+//     var type = localStorage.getItem("category");//selectCategory
+//     var answer = document.querySelector('input[name=extra]').value;
+//     var longitude =  parseFloat(localStorage.getItem("lng"));
+//     var latitude = parseFloat(localStorage.getItem("lat"));
+//
+//     console.log(type,answer,longitude,latitude);
+//
+//     let location_check = true;
+//     $.ajax({
+//         url: "/user/map",
+//         data: {
+//             "type" : type,
+//             "answer" : answer,
+//             "lng" : longitude,
+//             "lat" : latitude
+//         },
+//         type: "POST",
+//         dataType:"json",
+//         async:false,
+//         error: function (jqXHR, textStatus, errorThrown) {
+//             console.error('Ajax 요청 오류:', textStatus, errorThrown);
+//             location_check = false;
+//         }
+//
+//
+//     }).done(function(rs){
+//         console.log(rs);
+//         if(!rs.status){
+//             // console.error('Error:', error);
+//             alert(rs.msg);
+//             location_check=false;
+//         }
+//     });
+//     console.log("여기까지")
+//     return location_check;
+//
+//     // 새로운 마커 생성
+//     var newMarker = new google.maps.Marker({
+//         position: { lat: latitude, lng: longitude },
+//         map: map,
+//         title: '새로운 마커',
+//         icon:  markerIcon // dot_color 함수를 이용해 아이콘 설정
+//     });
+//
+//     // 마커 클릭 이벤트 처리
+//     var InfoWindow = new google.maps.InfoWindow({
+//         content: '새로운 마커의 정보 창',
+//     });
+//
+//     newMarker.addListener('click', function () {
+//         InfoWindow.open(map, newMarker);
+//     });
+//
+//     // 위치 체크 성공 여부를 반환할 수 있습니다.
+//     return true;
+//
+// }
+//현재위치에서 마커를 등록하기 위한 사진찍기 버튼을 눌렀을때의 함수
+function getPhoto() {
     //종류버튼, 추가설명, 위치
-    var type = localStorage.getItem("category");//selectCategory
-    var answer = document.querySelector('input[name=extra]'   ).value;
-    var longitude =  parseFloat(localStorage.getItem("lng"));
+    var type = localStorage.getItem("category");
+    var answer = document.querySelector('input[name=extra]').value;
+    var longitude = parseFloat(localStorage.getItem("lng"));
     var latitude = parseFloat(localStorage.getItem("lat"));
+    var img = "경로를 여기에 추가";  // 이미지 경로 설정
+    var id = "사용자 ID를 여기에 추가";  // 사용자 ID 설정
 
-    console.log(type,answer,longitude,latitude);
-
+    console.log(type, answer, longitude, latitude, img, id);
+    // window.location.href = 'http://localhost/photo';
     let location_check = true;
     $.ajax({
         url: "/user/map",
         data: {
-            "type" : type,
-            "answer" : answer,
-            "lng" : longitude,
-            "lat" : latitude
+            "type": type,
+            "answer": answer,
+            "lng": longitude,
+            "lat": latitude
+            //데이터 빈배열
         },
         type: "POST",
-        dataType:"json",
-        async:false,
+        dataType: "json",
+        async: false,
         error: function (jqXHR, textStatus, errorThrown) {
             console.error('Ajax 요청 오류:', textStatus, errorThrown);
             location_check = false;
+            // var newMarker = new google.maps.Marker({
+            //     position: userLocation, // 필요에 따라 위치를 변경하세요
+            //     map: map,
+            //     title: '새로운 마커',
+            //     icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png' // 사용자 정의 아이콘 URL로 설정
+            // });
+
+            // 여기서 추가적인 로직을 수행할 수 있습니다. 예를 들어 새로운 마커에 대한 인포 윈도우를 열 수 있습니다.
+            infowindow.open(map, newMarker);
         }
 
 
-    }).done(function(rs){
+    }).done(function (rs) {
         console.log(rs);
-        if(!rs.status){
+        if (!rs.status) {
             // console.error('Error:', error);
             alert(rs.msg);
-            location_check=false;
+            location_check = false;
         }
     });
     console.log("여기까지")
-    return location_check;
+    // return location_check;
+
+    // 선택한 카테고리에 기반하여 마커 아이콘을 설정
+    var markerIcon = dot_color(type);
+    console.log(markerIcon);
+
+    // 지정된 아이콘을 사용하여 새로운 마커 생성
+    var newMarker = new google.maps.Marker({
+        position: { lat: latitude, lng: longitude },
+        map: map,
+        title: '새로운 마커',
+        icon : dot_color(type) // 선택한 카테고리에 따라 마커 아이콘 설정
+    });
+    DB_DATA.push(newMarker);
+
+    // 마커 클릭 이벤트 처리
+    var newInfoWindow = new google.maps.InfoWindow({
+        content: '새로운 마커의 정보 창',
+    });
+
+    newMarker.addListener('click', function () {
+        newInfoWindow.open(map, newMarker);
+    });
+
+    // 위치 체크 성공 여부를 반환
+    return true;
 }
 
+// "사진찍기" 버튼 클릭 이벤트 처리
+infowindow.addListener('domready', function () {
+    document.getElementById('cam-button').addEventListener('click', function () {
+        // 버튼 클릭 시 getPhoto 함수 호출
+        var locationCheck = getPhoto();
+
+        var markerIcon = dot_color(type);
+        console.log(markerIcon)
+
+        // 위치 체크 성공 여부 확인
+        if (locationCheck) {
+            window.location.href = 'http://localhost/photo';
+            // 마커를 성공적으로 생성한 경우 infowindow를 닫음
+            infowindow.close();
+        }
+    });
+});
+
+function handleGetPhoto() {
+    getPhoto().then(function (locationCheck) {
+        if (locationCheck) {
+            // 위치 확인이 성공하면 페이지 이동
+            window.location.href = 'http://localhost/photo';
+        }
+    });
+}
 // 정보 창 닫기 함수?? 이건 그냥 x 버튼 누르면 되는거 아님?
 
 //이건 카테고리 선택한것을 로컬스토리지에 저장해주는 함수
@@ -407,54 +491,28 @@ function selectCategory(button, newClass) {
 }
 */
 // "등록하기" 버튼 클릭 이벤트 처리
-// document.getElementById('register-button').addEventListener('click', function() {
+document.getElementById('register-button').addEventListener('click', function() {
 //     // 입력 상자를 나타내는 요소를 가져옴
-//     var inputContainer = document.getElementById('input-container');
+    var inputContainer = document.getElementById('input-container');
 
-//     // $.ajax({
-//     //     url: "/user/map",
-//     //     data: {
-//     //         "longitude" : position.coords.longitude,
-//     //         "latitude" : position.coords.latitude
-//     //     },
-//     //     type: "POST",
-//     //     dataType:"json",
-//     //     async:false,
-//     //     error: function (error) {
-//     //         // 에러 발생 시의 동작
-//     //         console.error('Error:', error);
-//     //         alert(error);
-//     //
-//     //     }
-//     //
-//     // }).done(function(rs){
-//     //     console.log(rs);
-//     //     if(!rs.status){
-//     //         console.error('Error:', error);
-//     //         alert(rs.msg);
-//     //     }
-//     // });
+   });
 
 //     // 입력 상자를 표시 (CSS로 display 속성을 변경)
-//     inputContainer.style.display = 'block';
+    inputContainer.style.display = 'block';
 // });
 
 // "제출" 버튼 클릭 이벤트 처리 (입력 상자가 표시된 후)
-// document.getElementById('submit-button').addEventListener('click', function() {
+document.getElementById('submit-button').addEventListener('click', function() {
 //     // 입력 상자의 내용 가져오기
 //     // var inputValue = document.getElementById('input-text').value;
 
 //     // 여기에서 입력 상자의 내용을 처리하는 코드를 추가하세요.
-//     alert('입력된 내용: ' + inputValue);
+    alert('입력된 내용: ' + inputValue);
 
 //     // 입력 상자 숨기기
-//     document.getElementById('input-container').style.display = 'none';
-// });
+    document.getElementById('input-container').style.display = 'none';
+});
 
-// function redirectToR4() {
-//     id="my-page-button" , className="custom1-button"
-//     window.location.href = "http://localhost/r4";
-// }
 // Get the button element by its id
 var BackButton = document.getElementById('back-button');
 
@@ -463,3 +521,87 @@ var BackButton = document.getElementById('back-button');
 //    // Use the history object to navigate back to the previous page
 //    window.history.back();
 //});
+
+// DB_DATA 배열 초기화
+var DB_DATA = [];
+
+// 페이지 로드 시 서버에서 마커 데이터를 가져오지 않고, 로컬 스토리지에서 바로 가져오도록 변경
+$(document).ready(function () {
+    // 로컬 스토리지에서 데이터 불러오기 시도
+    var storedMarkers = localStorage.getItem('markers');
+    if (storedMarkers) {
+        // 로컬 스토리지에 데이터가 있을 경우
+        DB_DATA = JSON.parse(storedMarkers);
+        displayMarkersOnMap();
+    } else {
+        // 로컬 스토리지에 데이터가 없을 경우 DB 초기화
+        DB_DATA = [];
+    }
+});
+
+function addMarker() {
+    // 새로운 마커를 DB_DATA에 추가
+    var newMarker = {
+        // 마커 정보 설정
+    };
+    DB_DATA.push(newMarker);
+
+    // 로컬 스토리지에 현재 상태 저장
+    localStorage.setItem('markers', JSON.stringify(DB_DATA));
+
+    // 이후 작업 (예: 지도에 마커 표시 등)
+    displayMarkersOnMap();
+}
+
+// 서버에서 데이터를 가져와서 DB_DATA에 저장하는 함수
+// 서버에서 데이터를 가져와서 DB_DATA에 저장하는 함수
+function selectSqldata() {
+    $.ajax({
+        type: "GET",
+        url: "/selectSqldata", // 서버에서 마커 데이터를 제공하는 엔드포인트
+        success: function (data) {
+            // 서버에서 받아온 데이터를 확인 (콘솔에 출력)
+            console.log("Data received from the server:", data);
+
+            // 받아온 데이터의 형식이 예상과 다를 경우 가공이 필요할 수 있음
+            // 예시: DB_DATA에 직접 할당
+            DB_DATA = data;
+
+            // 데이터를 이용하여 지도에 마커 표시 등의 작업 수행 가능
+            displayMarkersOnMap();
+        },
+        error: function (xhr, status, error) {
+            console.error("Error fetching markers:", status, error);
+        }
+    });
+}
+
+
+// 서버에서 받아온 데이터를 이용하여 지도에 마커 표시하는 함수 (이 함수는 실제로 구현되어 있지 않으므로 사용자가 적절히 구현 필요)
+function displayMarkersOnMap() {
+    for (let i = 0; i < DB_DATA.length; i++) {
+        const marker = new google.maps.Marker({
+            position: { lat: DB_DATA[i].lat, lng: DB_DATA[i].lng },
+            map: map,
+            title: DB_DATA[i].title,
+            // 필요한 경우 다른 속성 추가
+        });
+        console.log("Displaying markers on the map:", DB_DATA);
+}
+}
+
+// 페이지 로드 시 서버에서 마커 데이터를 가져옴
+$(document).ready(function () {
+    selectSqldata();
+});
+
+
+function deleteMarker(markerIndex) {
+    // 마커를 삭제한 후 DB_DATA 업데이트
+
+    // 로컬 스토리지에 현재 상태 저장
+    localStorage.setItem('markers', JSON.stringify(DB_DATA));
+
+    // 이후 작업 (예: 지도에 마커 표시 새로고침 등)
+    displayMarkersOnMap();
+}

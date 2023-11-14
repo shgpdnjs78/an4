@@ -84,8 +84,8 @@ function take_snapshot() {
             data: {
                 "type" : type,
                 "answer" : answer,
-                "lng" : longitude,
-                "lat" : latitude
+                "lng" : long,
+                "lat" : lat
             },
             type: "POST",
             dataType:"json",

@@ -2,13 +2,17 @@ package com.project.an.controller;
 
 import com.project.an.dto.JsonResultDTO;
 import com.project.an.svc.UserService;
+import com.project.an.vo.UserInfo;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.apache.logging.log4j.Marker;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -76,11 +80,13 @@ public class UserController {
 
         return jsonResultDTO;
     }
+
     @PostMapping
     public String mapsave(@RequestParam("type") String type,
                           @RequestParam("answer") String answer,
                           @RequestParam("lat") String lat,
-                          @RequestParam("lng") String lng) {
+                          @RequestParam("lng") String lng,
+                          @RequestParam("id") String id) {
         this.type = type;
         this.answer = answer;
         this.lat = lat;
@@ -96,7 +102,7 @@ public class UserController {
         return jsonResultDTO.finalResult();
     }
 
-    @GetMapping("photo")
+    @GetMapping(value = {"/photo"})
     @PostMapping
     public String photo(HttpServletRequest request, @RequestBody Map<String, String> data) {
         String type = data.get("type");
@@ -104,15 +110,74 @@ public class UserController {
         String lat = data.get("lat");
         String lng = data.get("lng");
 
-            JsonResultDTO jsonResultDTO = new JsonResultDTO(false, "process fail", null);
-            boolean locationRegister_check  = userService.locationRegisterProcess(data.get("type"), data.get("answer"), data.get("lat"), data.get("lng"), request);
+        JsonResultDTO jsonResultDTO = new JsonResultDTO(false, "process fail", null);
+        boolean locationRegister_check = userService.locationRegisterProcess(data.get("type"), data.get("answer"), data.get("lat"), data.get("lng"), request);
 
-            if (locationRegister_check) {
-                jsonResultDTO.setSuccess();
-            }
-            return jsonResultDTO.finalResult(); // 또는 다른 적절한 응답값
+        if (locationRegister_check) {
+            jsonResultDTO.setSuccess();
         }
+        return "/map";
     }
+
+    @PostMapping("/changeId")
+    public ResponseEntity<Map<String, Object>> changeId(@RequestParam String id, HttpServletRequest request) {
+        Map<String, Object> response = new HashMap<>();
+
+        HttpSession session = request.getSession();
+        // Call the changeId method in the UserService
+        boolean email_check = userService.changeId(id, request);
+
+        if (email_check) {
+            response.put("success", true);
+            response.put("message", "이메일이 성공적으로 업데이트되었습니다.");
+        } else {
+            response.put("success", false);
+            response.put("message", "이메일 업데이트 실패: 사용자 정보가 올바르지 않습니다.");
+        }
+
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/changePassword")
+    public ResponseEntity<Map<String, Object>> changePassword(@RequestParam String pw, HttpServletRequest request) {
+        Map<String, Object> response = new HashMap<>();
+
+        HttpSession session = request.getSession();
+        // Call the changeId method in the UserService
+        boolean pw_check = userService.changePassword(pw, request);
+
+        if (pw_check) {
+            response.put("success", true);
+            response.put("message", "이메일이 성공적으로 업데이트되었습니다.");
+        } else {
+            response.put("success", false);
+            response.put("message", "이메일 업데이트 실패: 사용자 정보가 올바르지 않습니다.");
+        }
+
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/selectSqldata")
+    @PostMapping
+    public String selectSqldata(HttpServletRequest request, @RequestParam("id") String id, @RequestParam("type") String type, @RequestParam("answer") String answer,
+                                @RequestParam("lat") String lat, @RequestParam("lng") String lng) {
+        //json 리턴을 위한 객체
+        JsonResultDTO jsonResultDTO = new JsonResultDTO(false, "process fail", null);
+        //로그인 처리부분(로그인 정보가 일치하는 계정의 존재유무 파악)
+        boolean selectSqldata_check = userService.selectSqldata(id, type, answer, lat, lng, request);
+        //정상일경우 상태값 & 결과메시지 변경
+        if (selectSqldata_check) {
+            jsonResultDTO.setSuccess();
+        }
+        return jsonResultDTO.finalResult();
+
+//    @GetMapping("/selectSqldata")
+//    public List<Marker> getMarkers() {
+//        // MarkerService를 통해 데이터베이스에서 마커 데이터를 가져옴
+//        return UserService.getAllMarkers();
+
+    }
+}
 
 
 

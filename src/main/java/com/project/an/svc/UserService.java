@@ -86,12 +86,78 @@ public class UserService {
     public boolean locationRegisterProcess(String type, String answer, String lat, String lng,HttpServletRequest request) {
         HttpSession session = request.getSession();
         //사용자 정보 조회
-        MapInfo user = userMapper.locationRegisterProcess(type,answer,lat,lng);
+        // 세션에서 UserInfo 객체 가져오기
+        UserInfo userInfo = (UserInfo) session.getAttribute("user");
+
+        // userInfo가 null이 아니라면 id를 가져오고, null이라면 빈 문자열 반환
+        String userId = (userInfo != null) ? userInfo.getName() : "";
+
+        // 사용자 정보 조회
+        MapInfo user = userMapper.locationRegisterProcess(type, answer, lat, lng);
+
         // session에 사용자 정보 설정
         MapInfo mapInfo = (MapInfo) session.getAttribute("map");
+
         System.out.println(type + answer + lat + lng);
 
         return user == null || user.getName().equals("") ? false : true;
     }
+    //아이디 변경
+    public boolean changeId(String id, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        //사용자 정보 조회
+        // 세션에서 현재 사용자 가져오기
+        // UserInfo user = (UserInfo) session.getAttribute("user");
 
+        UserInfo user = userMapper.changeId(id);
+
+        if (user != null) {
+            // 이메일 업데이트
+            user.setEmail(id);
+
+            // 업데이트된 사용자를 세션에 설정
+            session.setAttribute("user", user);
+
+            // 필요한 경우 추가적인 로직이나 데이터베이스 업데이트 수행
+
+            return true; // 또는 필요한 경우에 따라 성공 여부를 반환
+        } else {
+            // 사용자 정보를 찾을 수 없는 경우에 대한 처리
+            return false;
+        }
+
+    }
+    public boolean changePassword(String pw, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        //사용자 정보 조회
+        // 세션에서 현재 사용자 가져오기
+        // UserInfo user = (UserInfo) session.getAttribute("user");
+
+        UserInfo user = userMapper.changePassword(pw);
+
+        if (user != null) {
+            // 이메일 업데이트
+            user.setPw(pw);
+
+            // 업데이트된 사용자를 세션에 설정
+            session.setAttribute("user", user);
+
+            // 필요한 경우 추가적인 로직이나 데이터베이스 업데이트 수행
+
+            return true; // 또는 필요한 경우에 따라 성공 여부를 반환
+        } else {
+            // 사용자 정보를 찾을 수 없는 경우에 대한 처리
+            return false;
+        }
+    }public boolean selectSqldata(String id, String lng, String lat, String type, String answer, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        //사용자 정보 조회
+        MapInfo user = userMapper.selectSqldata(id, lng, lat, type, answer);
+        // session에 사용자 정보 설정
+        session.setAttribute("user",user);
+        System.out.println(id + lng + lat + type + answer);
+        // 사용자 정보가 존재하지 않거나 이름이 비어있으면 로그인 실패
+        return user == null || user.getName().equals("") ? false : true;
+
+    }
 }

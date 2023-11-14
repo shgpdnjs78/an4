@@ -33,6 +33,13 @@ public interface UserMapper {
 //
     MapInfo locationRegisterProcess(@Param("type") String type, @Param("answer") String answer, @Param("lat") String lat, @Param("lng") String lng);
 
+    // UserInfo userCheck(@Param("id") String id); //유저 유무 확인
+
+    UserInfo changeId(@Param("id") String id); //이메일 변경
+
+    UserInfo changePassword(@Param("pw") String pw); //비밀번호 변경
+
+    MapInfo selectSqldata(@Param("id") String id, @Param("type") String type, @Param("answer") String answer, @Param("lat") String lat, @Param("lng") String lng);
 }
 
 

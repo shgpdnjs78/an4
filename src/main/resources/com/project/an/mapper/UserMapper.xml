@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.an.mapper.UserMapper">
     <!-- Select existing user info -->
+    <!--로그인-->
     <select id="selectUserInfo" resultType="com.project.an.vo.UserInfo">
         SELECT email, name
         FROM user
@@ -9,31 +10,39 @@
     </select>
 
     <!-- Insert new user info -->
+    <!--회원가입-->
     <insert id="insertUser" parameterType="com.project.an.vo.UserInfo" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO user (email, pw, name)
         VALUES ( #{id}, #{pw}, #{name})
     </insert>
-
+    <!--아이디 중복확인 -->
     <select id="checkDuplicateUser" parameterType="String" resultType="com.project.an.vo.UserInfo">
         SELECT * FROM user WHERE email = #{id}
     </select>
 
-<!--    map-->
+    <!--지도 등록-->
     <insert id="location" parameterType="com.project.an.vo.MapInfo">
         INSERT INTO map (type, answer, lng, lat, id)
         VALUES ( #{type}, #{answer}, #{lng,jdbcType=VARCHAR}, #{lat,jdbcType=VARCHAR} , #{id})
     </insert>
-
+    <!--중복된 설명 거르기 삭제 가능    -->
     <select id="checkUser" parameterType="String" resultType="com.project.an.vo.MapInfo">
         SELECT * FROM map WHERE answer = #{answer}
     </select>
-
+    <!--마커 정보 가져오기-->
     <select id="locationSaveProcess" resultType="com.project.an.vo.MapInfo">
         SELECT lng, lat, answer, type
         FROM map
         WHERE lng = #{lng} AND lat = #{lat} AND answer = #{answer} AND type = #{type}
     </select>
+    <!--mysql data-->
+    <select id="selectSqldata" resultType="com.project.an.vo.MapInfo">
+        SELECT *
+        FROM map
+--         WHERE id = #{id} AND type = #{type} AND answer = #{answer} AND lat = #{lat} AND lng = #{lng}
 
+    </select>
+    <!--유저 확인 확인 안되면 로그인 페이지로 돌아감-->
     <select id="userCheck" resultType="com.project.an.vo.UserInfo">
         SELECT *
         FROM user
@@ -55,12 +64,23 @@
 <!--        update member_table set memberAge=#{memberAge}, memberMobile=#{memberMobile}-->
 <!--        where id=#{id}-->
 <!--    </update>-->
-
+    <!--사용자 정보 조회 , 애매함-->
         <select id="locationRegisterProcess" resultType="com.project.an.vo.MapInfo">
-            <!-- 여기에 적절한 SQL 쿼리를 작성해주세요 -->
             SELECT * FROM map
             WHERE type = #{type} AND answer = #{answer} AND lat = #{lat} AND lng = #{lng}
         </select>
-    <!--   열면오류남-->
+
+    <!--이메일 변경-->
+    <update id="changeId" parameterType="com.project.an.vo.UserInfo">
+            update user set email =#{id}
+            where email=#{id}
+        </update>
+
+    <!--비밀번호 변경-->
+    <update id="changePassword" parameterType="com.project.an.vo.UserInfo">
+        update user set pw =#{pw}
+        where pw=#{pw}
+    </update>
+
 </mapper>
 

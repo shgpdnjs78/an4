@@ -9,8 +9,6 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-
 @Service //비지니스 로직이 있으며 저장소 계층을 사용
 public class UserService {
     @Autowired //스프링에게 해당 필드를 자동으로 주입하도록 지시 userMapper 필드에 넣음
@@ -58,7 +56,7 @@ public class UserService {
         return count > 0; // 정보 가져오기 성공
         }
         //위치 정보 쓰기(로그인 같이)
-    public boolean locationSaveProcess(String type, String answer, String lat, String lng) {
+    public boolean locationSaveProcess(String type, String answer, String lat, String lng, String id) {
         MapInfo user = userMapper.locationSaveProcess(type, answer,lat,lng);
         System.out.println(type + answer + lat + lng);
         return user == null || user.getName().equals("") ? false : true;

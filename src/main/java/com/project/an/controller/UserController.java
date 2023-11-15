@@ -25,7 +25,7 @@ public class UserController {
     private String answer;
     private String lat;
     private String lng;
-
+    private String id;
     @GetMapping("login")
     @PostMapping
     public String login(HttpServletRequest request, @RequestParam("id") String id, @RequestParam("pw") String pw) {
@@ -80,7 +80,7 @@ public class UserController {
 
         return jsonResultDTO;
     }
-
+    //map save 수정해야함
     @PostMapping
     public String mapsave(@RequestParam("type") String type,
                           @RequestParam("answer") String answer,
@@ -91,10 +91,11 @@ public class UserController {
         this.answer = answer;
         this.lat = lat;
         this.lng = lng;
+        this.id = id; //id값 받아오기
         //json 리턴을 위한 객체
         JsonResultDTO jsonResultDTO = new JsonResultDTO(false, "process fail", null);
         //로그인 처리부분(로그인 정보가 일치하는 계정의 존재유무 파악)
-        boolean location_check = userService.locationSaveProcess(type, answer, lat, lng);
+        boolean location_check = userService.locationSaveProcess(type, answer, lat, lng, id);
         //정상일경우 상태값 & 결과메시지 변경
         if (location_check) jsonResultDTO.setSuccess();
 

@@ -82,7 +82,7 @@ var DB_DATA =
         answer : '아', //DB에서 받아온 누군가가 써놓은 설명
     }
     ];
-    DB_DATA.push(newMarker);
+
     //DB_DATA에 새로운 마커를 추가한다.
 // 로컬 스토리지에 현재 상태 저장
     localStorage.setItem('markers', JSON.stringify(DB_DATA));
@@ -149,7 +149,7 @@ function initMap() {
                     string+  //여기서 버튼이 만들어진다
                     '<p>추가설명</p>' +
                     '<input type="text" name="extra" class="form-style" placeholder="추가설명을 입력하세요">' +
-                    '<button id="cam-button" class="custom8-button" onclick="return handleGetPhoto()">사진찍기</button>'
+                    '<button id="cam-button" class="custom8-button" onclick="return getPhoto()">사진찍기</button>'
             });
 
             // 마커 클릭 이벤트 처리
@@ -353,11 +353,11 @@ function getPhoto() {
     var answer = document.querySelector('input[name=extra]').value;
     var longitude = parseFloat(localStorage.getItem("lng"));
     var latitude = parseFloat(localStorage.getItem("lat"));
-    var img = "경로를 여기에 추가";  // 이미지 경로 설정
+    var img = "사진 경로 추가";  // 이미지 경로 설정
     var id = "사용자 ID를 여기에 추가";  // 사용자 ID 설정
 
     console.log(type, answer, longitude, latitude, img, id);
-    // window.location.href = 'http://localhost/photo';
+    //window.location.href = 'http://localhost/photo';
     let location_check = true;
     $.ajax({
         url: "/user/map",
@@ -434,21 +434,21 @@ infowindow.addListener('domready', function () {
 
         // 위치 체크 성공 여부 확인
         if (locationCheck) {
-            window.location.href = 'http://localhost/photo';
+        //    window.location.href = 'http://localhost/photo';
             // 마커를 성공적으로 생성한 경우 infowindow를 닫음
             infowindow.close();
         }
     });
 });
 
-function handleGetPhoto() {
-    getPhoto().then(function (locationCheck) {
-        if (locationCheck) {
-            // 위치 확인이 성공하면 페이지 이동
-            window.location.href = 'http://localhost/photo';
-        }
-    });
-}
+// function handleGetPhoto() {
+//     getPhoto().then(function (locationCheck) {
+//         if (locationCheck) {
+//             // 위치 확인이 성공하면 페이지 이동
+//             window.location.href = 'http://localhost/photo';
+//         }
+//     });
+// }
 // 정보 창 닫기 함수?? 이건 그냥 x 버튼 누르면 되는거 아님?
 
 //이건 카테고리 선택한것을 로컬스토리지에 저장해주는 함수

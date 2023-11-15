@@ -6,6 +6,22 @@ src="vendor/bootstrap/js/bootstrap.bundle.min.js"
 // 정보공유
 var getparam = 123;
 console.log(getparam)
+
+document.addEventListener("DOMContentLoaded", function () {
+    // 페이지가 로드되면 실행되는 함수
+
+    // 사용자 정보 가져오기
+    var userId = localStorage.getItem("userId"); // 로그인된 아이디를 가져온다
+
+    // 가져온 아이디를 출력 영역에 업데이트
+    var emailElement = document.getElementById("email");
+    if (userId) {
+        emailElement.innerText = `📧${userId}`;
+    } else {
+        emailElement.innerText = "📧 사용자 정보 없음"; // 로그인 정보가 없는 경우에 대한 처리
+    }}
+);
+
 function editPhoneNumber() {
     // 전화번호 출력 영역을 숨기고 입력 폼을 보이게 함
     document.getElementById("phoneNumber").style.display = "none";

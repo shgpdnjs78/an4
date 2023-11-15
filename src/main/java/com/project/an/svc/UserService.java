@@ -103,11 +103,9 @@ public class UserService {
     //아이디 변경
     public boolean changeId(String id, HttpServletRequest request) {
         HttpSession session = request.getSession();
-        //사용자 정보 조회
-        // 세션에서 현재 사용자 가져오기
-        // UserInfo user = (UserInfo) session.getAttribute("user");
 
-        UserInfo user = userMapper.changeId(id);
+        // 세션에서 현재 사용자 가져오기
+        UserInfo user = (UserInfo) session.getAttribute("user");
 
         if (user != null) {
             // 이메일 업데이트
@@ -123,8 +121,8 @@ public class UserService {
             // 사용자 정보를 찾을 수 없는 경우에 대한 처리
             return false;
         }
-
     }
+
     public boolean changePassword(String pw, HttpServletRequest request) {
         HttpSession session = request.getSession();
         //사용자 정보 조회

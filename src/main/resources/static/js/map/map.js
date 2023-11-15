@@ -1,7 +1,8 @@
 src="https://code.jquery.com/jquery-3.6.4.min.js"
 
-var map;
 var infowindow;
+
+// var id;
 
 var filter_category = '';  //어떠한 버튼을 누르면 , 이 filter_category를 category_type의 몇번째 인덱스로 바꿔 줄 것이다.
 var category_type = ['','음식','공연','사고','기타'];
@@ -86,7 +87,9 @@ var DB_DATA =
     //DB_DATA에 새로운 마커를 추가한다.
 // 로컬 스토리지에 현재 상태 저장
     localStorage.setItem('markers', JSON.stringify(DB_DATA));
-
+    var id = '<%= (String)session.getAttribute("user.email") %>\';\n' +
+        '    localStorage.setItem("id", id);';
+    localStorage.setItem("id", id);
 // 이후 작업 (예: 지도에 마커 표시 등)
     displayMarkersOnMap();
 
@@ -121,7 +124,8 @@ function initMap() {
         navigator.geolocation.getCurrentPosition(function(position) {
             var userLocation = {
                 lat: position.coords.latitude, //위도
-                lng: position.coords.longitude //경도
+                lng: position.coords.longitude, //경도
+
             };
             localStorage.setItem("lat",userLocation.lat);  //로컬스토리지 lat 에 위도 저장
             localStorage.setItem("lng",userLocation.lng);  //로컬스토리지 lng 에 경도 저장
@@ -165,8 +169,6 @@ function initMap() {
             // 해서 과감하게 싹다 지우고, 새로 구현했다.
             // DB에서 받아온 정보를 저장 하는것이 1차 목표
             // 그것을 구현하는것은 아래에 완성 한다.
-
-
 
 
             //DB의 정보를 받았으니, 이제 그것을 펼쳐서 마커들을 그려준다.
@@ -354,10 +356,11 @@ function getPhoto() {
     var longitude = parseFloat(localStorage.getItem("lng"));
     var latitude = parseFloat(localStorage.getItem("lat"));
     var img = "사진 경로 추가";  // 이미지 경로 설정
-    var id = "사용자 ID를 여기에 추가";  // 사용자 ID 설정
+    var id = localStorage.getItem("id");
+    // 사용자 ID 설정
 
     console.log(type, answer, longitude, latitude, img, id);
-    //window.location.href = 'http://localhost/photo';
+    window.location.href = 'http://localhost/photo';
     let location_check = true;
     $.ajax({
         url: "/user/map",
@@ -365,7 +368,8 @@ function getPhoto() {
             "type": type,
             "answer": answer,
             "lng": longitude,
-            "lat": latitude
+            "lat": latitude,
+            "id": id
             //데이터 빈배열
         },
         type: "POST",
@@ -440,16 +444,6 @@ infowindow.addListener('domready', function () {
         }
     });
 });
-
-// function handleGetPhoto() {
-//     getPhoto().then(function (locationCheck) {
-//         if (locationCheck) {
-//             // 위치 확인이 성공하면 페이지 이동
-//             window.location.href = 'http://localhost/photo';
-//         }
-//     });
-// }
-// 정보 창 닫기 함수?? 이건 그냥 x 버튼 누르면 되는거 아님?
 
 //이건 카테고리 선택한것을 로컬스토리지에 저장해주는 함수
 function selectCategory(category) {
@@ -576,7 +570,6 @@ function selectSqldata() {
     });
 }
 
-
 // 서버에서 받아온 데이터를 이용하여 지도에 마커 표시하는 함수 (이 함수는 실제로 구현되어 있지 않으므로 사용자가 적절히 구현 필요)
 function displayMarkersOnMap() {
     for (let i = 0; i < DB_DATA.length; i++) {
@@ -594,7 +587,6 @@ function displayMarkersOnMap() {
 $(document).ready(function () {
     selectSqldata();
 });
-
 
 function deleteMarker(markerIndex) {
     // 마커를 삭제한 후 DB_DATA 업데이트

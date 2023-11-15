@@ -1,3 +1,25 @@
+.c-tabs--type1 .c-tabs__button.is-active {
+    background-color: #1d1d1b;
+    color: #fff;
+    margin-top: 10px;
+}
+.c-tabs--type1 .c-tabs__button {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    position: relative;
+    width: 19.5625rem;
+    max-width: 19.5625rem;
+    padding: 0 1.875rem;
+    background: #f7f7f7;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 4.0625rem;
+    text-align: center;
+    color: #1d1d1b;
+    z-index: 1;
+    margin-top: 10px;
+}
 .back-button {
     display: flex;
     align-items: center;
@@ -14,7 +36,29 @@
     right: 20px; /* Distance from the right */
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1); /* Optional: Add a box shadow */
 }
-
+.c-tabs--type1 .c-tabs__list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 68.75rem;
+    /*margin: 0 auto;*/
+    padding: 0 5rem;
+    border-bottom: 0.0625rem solid #efefef;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+.col-lg-4 col-md-6 mb-4 {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+.card h-100 {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
 .back-button:hover {
     background-color: rgba(220, 124, 218, 0.98); /* Change background color on hover */
     cursor: pointer;

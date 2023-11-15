@@ -1,3 +1,31 @@
+.col-lg-9 {
+    margin-top: 95px;
+    margin-bottom: 50px;
+    background: #f9f9f9;
+}
+/* 입력 폼 스타일 */
+.p-5 {
+    margin-bottom: 20px; /* 입력 폼 사이의 간격 조절 */
+    background: #f9f9f9;
+    margin-top: 95px;
+    width: 600px; /* 너비를 원하는 값으로 지정하세요 */
+    height: 500px; /* 높이를 원하는 값으로 지정하세요 */
+}
+
+.form-control {
+    margin-bottom: 15px;
+    height: 40px; /* 입력 폼 높이 조절 */
+    font-size: 16px; /* 입력 폼 글꼴 크기 조절 */
+}
+
+/* 제출 버튼 스타일 */
+.btn-user {
+    height: 40px; /* 제출 버튼 높이 조절 */
+    font-size: 16px; /* 제출 버튼 글꼴 크기 조절 */
+}
+
+/* 제출 버튼 위치 조절 */
+
 .back-button {
     display: flex;
     align-items: center;

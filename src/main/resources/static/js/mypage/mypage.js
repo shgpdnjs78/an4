@@ -6,22 +6,6 @@ src="vendor/bootstrap/js/bootstrap.bundle.min.js"
 // 정보공유
 var getparam = 123;
 console.log(getparam)
-
-document.addEventListener("DOMContentLoaded", function () {
-    // 페이지가 로드되면 실행되는 함수
-
-    // 사용자 정보 가져오기
-    var userId = localStorage.getItem("userId"); // 로그인된 아이디를 가져온다
-
-    // 가져온 아이디를 출력 영역에 업데이트
-    var emailElement = document.getElementById("email");
-    if (userId) {
-        emailElement.innerText = `📧${userId}`;
-    } else {
-        emailElement.innerText = "📧 사용자 정보 없음"; // 로그인 정보가 없는 경우에 대한 처리
-    }}
-);
-
 function editPhoneNumber() {
     // 전화번호 출력 영역을 숨기고 입력 폼을 보이게 함
     document.getElementById("phoneNumber").style.display = "none";
@@ -30,7 +14,15 @@ function editPhoneNumber() {
 
 function editEmail() {
     // 이메일 출력 영역을 숨기고 입력 폼을 보이게 함
+    //var id = document.getElementById("email").value;
+
     document.getElementById("email").style.display = "none";
+    document.getElementById("emailForm").style.display = "block";
+}function editName() {
+    // 이메일 출력 영역을 숨기고 입력 폼을 보이게 함
+    //var id = document.getElementById("email").value;
+
+    document.getElementById("username").style.display = "none";
     document.getElementById("emailForm").style.display = "block";
 }
 
@@ -59,6 +51,34 @@ function updateEmail() {
     document.getElementById("email").style.display = "block";
     document.getElementById("emailForm").style.display = "none";
 
+
+    return true;
+
+    let email_check = true;
+    $.ajax({
+        url: "/user/mypage",
+        data: {
+            "id" : id
+        },
+        type: "POST",
+        dataType: "json",
+        success: function (response) {
+            // 서버에서의 응답을 처리
+            if (response.success) {
+                // 성공적으로 업데이트된 경우에 추가 동작 수행
+                console.log("이메일 업데이트 성공");
+            } else {
+                // 업데이트 실패 시의 동작
+                console.error("이메일 업데이트 실패");
+            }
+        },
+        error: function (error) {
+            // 에러 발생 시의 동작
+            console.error('Error:', error);
+            alert("이메일 업데이트 중 오류가 발생했습니다.");
+        }
+    });
+
     return true;
 }
 function handleEmailUpdate() {
@@ -69,6 +89,7 @@ function handleEmailUpdate() {
     if (isEmailUpdated) {
         alert('수정 되었습니다');
     }
+
 }
 
 // 버튼 클릭 이벤트에 handleEmailUpdate() 함수를 연결
@@ -78,19 +99,37 @@ document.getElementById("emailUpdateButton").addEventListener("click", handleEma
 
 // 파일 선택 시 미리보기 기능 구현
 const fileInput = document.querySelector('input[type="file"]');
-fileInput.addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    const reader = new FileReader();
+// fileInput.addEventListener('change', function(event) {
+//     const file = event.target.files[0];
+//     const reader = new FileReader();
+//
+//     reader.onloadend = function () {
+//         const profileImagePreview = document.querySelector('.box img.profile');
+//         profileImagePreview.src = reader.result;
+//     }
+//
+//     if (file) {
+//         reader.readAsDataURL(file);
+//     }
+// });
+// 이미지 업로드 함수
+function uploadImage(event) {
+    event.preventDefault(); // 기본 제출 동작 방지
 
-    reader.onloadend = function () {
-        const profileImagePreview = document.querySelector('.box img.profile');
-        profileImagePreview.src = reader.result;
+    // FormData 객체 생성
+    var formData = new FormData(document.getElementById('profileImageForm'));
+
+    // 서버로 FormData 전송 (예: AJAX를 사용할 수 있음)
+    // 여기서는 간단한 예시로 console.log로 FormData 내용 출력
+    for (var pair of formData.entries()) {
+        console.log(pair[0] + ', ' + pair[1]);
     }
 
-    if (file) {
-        reader.readAsDataURL(file);
-    }
-});
+    // 이미지 업로드 후에 이미지를 표시할 <img> 업데이트
+    // 여기서는 예시로 로컬의 이미지 경로를 사용
+    var uploadedImage = formData.get('profileImage');
+    document.getElementById('profileImage').src = URL.createObjectURL(uploadedImage);
+}
 
 // 프로필 사진 업로드를 위한 이벤트 핸들러
 document.getElementById("profileImageForm").addEventListener("submit", function(event) {

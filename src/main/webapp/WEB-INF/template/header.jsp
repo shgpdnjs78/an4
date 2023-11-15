@@ -14,7 +14,7 @@
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="map" class="nav-link px-2 text-secondary">지도</a></li>
                 <li><a href="mypage" class="nav-link px-2 text-white">마이페이지</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">게시판</a></li>
+<%--                <li><a href="#" class="nav-link px-2 text-white">게시판</a></li>--%>
                 <li><a href="#" class="nav-link px-2 text-white">새로고침</a></li>
                 <li><a href="cs" class="nav-link px-2 text-white">문의사항</a></li>
             </ul>

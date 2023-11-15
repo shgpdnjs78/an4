@@ -71,10 +71,11 @@
         </select>
 
     <!--이메일 변경-->
-    <update id="changeId" parameterType="com.project.an.vo.UserInfo">
+    <update id="changeId">
             update user set email =#{id}
             where email=#{id}
         </update>
+    <!--parameterType="com.project.an.vo.UserInfo"-->
 
     <!--비밀번호 변경-->
     <update id="changePassword" parameterType="com.project.an.vo.UserInfo">

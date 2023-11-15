@@ -41,147 +41,97 @@
     </div>
     <!-- /.col-lg-3 -->
 
-    <div class="col-lg-9">
-
-      <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <%--          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>--%>
-          <%--          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>--%>
-          <%--          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>--%>
-        </ol>
-        <div class="carousel-inner" role="listbox">
-
-          <%--          <div class="carousel-item">--%>
-          <%--            <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="Second slide">--%>
-          <%--          </div>--%>
-          <%--          <div class="carousel-item">--%>
-          <%--            <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="Third slide">--%>
-          <%--          </div>--%>
-        </div>
-        <%--        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">--%>
-        <%--          <span class="carousel-control-prev-icon" aria-hidden="true"></span>--%>
-        <%--          <span class="sr-only">Previous</span>--%>
-        <%--        </a>--%>
-        <%--        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">--%>
-        <%--          <span class="carousel-control-next-icon" aria-hidden="true"></span>--%>
-        <%--          <span class="sr-only">Next</span>--%>
-        <%--        </a>--%>
+    <div class="c-tabs c-tabs--type1">
+      <div class="c-tabs__list">
+        <a class="c-tabs__button is-active" id="tab1" href="mymarker" aria-selected="true" title="진행중인 이벤트">진행중인 이벤트</a>
+        <a class="c-tabs__button" id="tab2" href="endEvent" aria-selected="false">종료된 이벤트</a>
       </div>
-
-      <div class="button-container">
-        <a href="http://localhost/mymarker" button class="ing" onclick="ingEvent()">진행중인 이벤트</button> </a>
-        <a href="http://localhost/endEvent" button class="end" onclick="endEvent()">종료된 이벤트</button> </a>
-        <%--        <a href="http://localhost/r8" button id="post-button" class="custom7-button">게시판</button> </a>--%>
-      </div>
-
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="http://localhost/mymarkers">Post-One</a>
-            </h4>
-            <h5>food</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="http://localhost/mymarkers">Post-Two</a>
-            </h4>
-            <h5>food</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-          </div>
-        </div>
-      </div>
-
-      <!-- 다음 카드들(Post-Three부터 Post-Six까지)도 동일한 구조로 추가하면 됩니다 -->
-
-
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Post-Three</a>
-            </h4>
-            <h5>food</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Post-Four</a>
-            </h4>
-            <h5>food</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Post-Five</a>
-            </h4>
-            <h5>food</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Post-Six</a>
-            </h4>
-            <h5>food</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-          </div>
-        </div>
-      </div>
-
     </div>
+
+
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="http://localhost/mymarkers">음식</a>
+          </h4>
+          <p class="card-text">임당역 5번 출구 앞에 붕어빵 가게 왔어요</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="http://localhost/mymarkers">사고</a>
+          </h4>
+          <p class="card-text">영대 오거리에 경미한 사고가 발생해 길이 조금 막힙니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 다음 카드들(Post-Three부터 Post-Six까지)도 동일한 구조로 추가하면 됩니다 -->
+
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="#">공연</a>
+          </h4>
+          <p class="card-text">영남대 정문 대구은행 앞에 버스킹 열였습니다. 구경가세요!!</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="#">기타</a>
+          </h4>>
+          <p class="card-text">예정에 없던 비가 옵니다. 외출 시 우산 챙기세요</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 mb-4">
+
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="#">음식</a>
+          </h4>
+          <p class="card-text">기숙사에 목살아저씨 오셨습니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="#">공연</a>
+          </h4>
+          <p class="card-text">경산 대추 축제가 열였습니다 많이 구경오세요!</p>
+        </div>
+      </div>
+    </div>
+
     <!-- /.row -->
-    <a href="map" class="back-button" id="go-back-button">뒤로가기</a>
+
+    <!-- /.col-lg-9 -->
 
   </div>
-  <!-- /.col-lg-9 -->
 
-</div>
-<!-- /.row -->
+  <!-- /.row -->
+  <a href="map" class="back-button" id="go-back-button">뒤로가기</a>
 
 </div>
 <!-- /.container -->

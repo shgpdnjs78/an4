@@ -27,4 +27,9 @@
     <!-- HTML 파일에 js-cookie 라이브러리를 추가 -->
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
 
+    <div class="contacts">
+        <%--                <p id="phoneNumber">📞+(82)10-2385-6794</p>--%>
+        <p id="id">📧${sessionScope.user.email}</p>
+    </div>
+
 </div>

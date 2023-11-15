@@ -84,9 +84,13 @@
                        id="reason" aria-describedby="pwdHelp"
                        placeholder="사유를 적어주세요">
 
+
                 <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-2">아이디와 비밀번호를 입력해주세요</h1>
 <%--정확한 본인확인을 위해 비밀번호를 입력해 주세요.--%>
+                    <p>
+                        <br>
+                    </p>
                     <form class="user">
                         <div class="form-group">
                             <input type="id" class="form-control form-control-user"

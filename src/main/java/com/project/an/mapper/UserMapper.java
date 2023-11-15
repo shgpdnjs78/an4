@@ -1,6 +1,5 @@
 package com.project.an.mapper;
 
-import com.project.an.dto.MemberDTO;
 import com.project.an.vo.MapInfo;
 import com.project.an.vo.UserInfo;
 import org.apache.ibatis.annotations.Mapper;
@@ -18,7 +17,7 @@ public interface UserMapper {
     UserInfo checkDuplicateUser(@Param("id") String id);
 
     //회원가입
-    int insertUser(@Param("id") String id, @Param("pw") String pw, @Param("name") String name);
+    int insertUser(@Param("id") String id, @Param("name") String name, @Param("pw") String pw);
 
     //위치 정보 받기
     int location(@Param("type") String type, @Param("answer") String answer, @Param("lat") String lat, @Param("lng") String lng, @Param("id") String email);
@@ -27,7 +26,7 @@ public interface UserMapper {
     MapInfo checkUser(@Param("answer") String answer);
 
     //위치 정보 사용
-    MapInfo locationSaveProcess(@Param("type") String type, @Param("answer") String answer, @Param("lat") String lat, @Param("lng") String lng);
+    MapInfo locationSaveProcess(@Param("type") String type, @Param("answer") String answer, @Param("lat") String lat, @Param("lng") String lng, @Param("id") String id);
 
 //    UserInfo userCheck(@Param("id") String id); //유저 유무 확인
 //

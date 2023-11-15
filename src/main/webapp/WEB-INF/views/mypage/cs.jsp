@@ -69,7 +69,7 @@
                             <input type="content" class="form-control2"
                                    id="content" aria-describedby="Help"
                                    placeholder="내용을 적어주세요">
-                            <button class="c-button c-button--lg c-button--primary c-button--w460" id="saveBtn" href="login" onclick="return validateForm() && alert('문의 사항이 접수 되었습니다. 48시간 내로 메일로 답변 드리겠습니다.')" disabled="">문의 등록하기</button>
+                            <button class="c-button c-button--lg c-button--primary c-button--w460" id="saveBtn" href="login" onclick="return validateForm() && alert('문의 사항이 접수 되었습니다. 48시간 내로 메일로 답변 드리겠습니다.')">문의 등록하기</button>
                         </div>
 <%--                        <a href="login" class="c-button c-button--lg c-button--primary c-button--w460" id="saveBtn" onclick="return validateForm() && alert('문의 사항이 접수 되었습니다. 48시간 내로 메일로 답변 드리겠습니다.')">--%>
 <%--                            문의 등록하기 </a>--%>

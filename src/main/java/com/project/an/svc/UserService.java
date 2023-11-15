@@ -27,7 +27,7 @@ public class UserService {
         return user == null || user.getName().equals("") ? false : true;
     }
     //회원가입
-    public boolean registerProcess(String id, String pw, String name) {
+    public boolean registerProcess(String id, String name, String pw) {
         //중복된 사용자 확인
         UserInfo existingUser = userMapper.checkDuplicateUser(id);
         // 존재하지 않는 경우 회원가입 로직 수행...
@@ -39,7 +39,7 @@ public class UserService {
 //        newUser.setName(name);
 //        newUser.setPw(pw);
         //insert,update,delete는 처리된 결과값의 카운트를 리턴한다
-        int count = userMapper.insertUser(id, pw, name);
+        int count = userMapper.insertUser(id, name,pw);
     // 회원가입 성공 여부 0 보다 크면 성공(1)
         return count > 0; // 회원가입 성공
     }
@@ -57,8 +57,8 @@ public class UserService {
         }
         //위치 정보 쓰기(로그인 같이)
     public boolean locationSaveProcess(String type, String answer, String lat, String lng, String id) {
-        MapInfo user = userMapper.locationSaveProcess(type, answer,lat,lng);
-        System.out.println(type + answer + lat + lng);
+        MapInfo user = userMapper.locationSaveProcess(type, answer,lat,lng, id);
+        System.out.println(type + answer + lat + lng + id);
         return user == null || user.getName().equals("") ? false : true;
 //        return user != null && !user.getName().isEmpty();
     }
@@ -103,9 +103,11 @@ public class UserService {
     //아이디 변경
     public boolean changeId(String id, HttpServletRequest request) {
         HttpSession session = request.getSession();
-
+        //사용자 정보 조회
         // 세션에서 현재 사용자 가져오기
-        UserInfo user = (UserInfo) session.getAttribute("user");
+        // UserInfo user = (UserInfo) session.getAttribute("user");
+
+        UserInfo user = userMapper.changeId(id);
 
         if (user != null) {
             // 이메일 업데이트
@@ -121,6 +123,7 @@ public class UserService {
             // 사용자 정보를 찾을 수 없는 경우에 대한 처리
             return false;
         }
+
     }
 
     public boolean changePassword(String pw, HttpServletRequest request) {

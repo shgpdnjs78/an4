@@ -126,6 +126,7 @@ public class UserController {
 
         HttpSession session = request.getSession();
         // Call the changeId method in the UserService
+
         boolean email_check = userService.changeId(id, request);
 
         if (email_check) {

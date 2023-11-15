@@ -1,3 +1,18 @@
+.p-5 {
+    background: #f9f9f9;
+    color: #100000;
+    margin-top: 95px;
+    /*margin-bottom: 70px;*/
+    width: 800px; /* 너비를 원하는 값으로 지정하세요 */
+    height: 1000px; /* 높이를 원하는 값으로 지정하세요 */
+}
+.text-center {
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
 .checkbox-group {
     font-family: Arial, sans-serif;
 }
@@ -10,6 +25,18 @@ input[type="checkbox"] {
 label {
     font-size: 20px;
     margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px; /* 간격을 조절하는 값으로 원하는 크기를 지정하세요 */
+}
+
+.btn btn-primary btn-user btn-block {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5;
+    /*margin-top: 50px;*/
+    /*margin-bottom: 40px;*/
 }
 .back-button {
     display: flex;

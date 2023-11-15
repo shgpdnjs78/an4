@@ -56,91 +56,88 @@
             <h4 class="card-title">
               <a href="http://localhost/mymarkers">음식</a>
             </h4>
-            <p class="card-text">임당역 5번 출구 앞에 붕어빵 가게 왔어요</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+            <p class="card-text">경산 시장에 목살아저씨 왔어요</p>
           </div>
         </div>
       </div>
 
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="http://localhost/mymarkers">사고</a>
-            </h4>
-            <p class="card-text">영대 오거리에 경미한 사고가 발생해 길이 조금 막힙니다.</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-          </div>
-        </div>
-      </div>
+<%--      <div class="col-lg-4 col-md-6 mb-4">--%>
+<%--        <div class="card h-100">--%>
+<%--          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>--%>
+<%--          <div class="card-body">--%>
+<%--            <h4 class="card-title">--%>
+<%--              <a href="http://localhost/mymarkers">사고</a>--%>
+<%--            </h4>--%>
+<%--            <p class="card-text">영대 오거리에 경미한 사고가 발생해 길이 조금 막힙니다.</p>--%>
+<%--          </div>--%>
+<%--          <div class="card-footer">--%>
+<%--            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>--%>
+<%--          </div>--%>
+<%--        </div>--%>
+<%--      </div>--%>
 
-      <!-- 다음 카드들(Post-Three부터 Post-Six까지)도 동일한 구조로 추가하면 됩니다 -->
+<%--      <!-- 다음 카드들(Post-Three부터 Post-Six까지)도 동일한 구조로 추가하면 됩니다 -->--%>
 
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">공연</a>
-            </h4>
-            <p class="card-text">영남대 정문 대구은행 앞에 버스킹 열였습니다. 구경가세요!!</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-          </div>
-        </div>
-      </div>
+<%--      <div class="col-lg-4 col-md-6 mb-4">--%>
+<%--        <div class="card h-100">--%>
+<%--          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>--%>
+<%--          <div class="card-body">--%>
+<%--            <h4 class="card-title">--%>
+<%--              <a href="#">공연</a>--%>
+<%--            </h4>--%>
+<%--            <p class="card-text">영남대 정문 대구은행 앞에 버스킹 열였습니다. 구경가세요!!</p>--%>
+<%--          </div>--%>
+<%--          <div class="card-footer">--%>
+<%--            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>--%>
+<%--          </div>--%>
+<%--        </div>--%>
+<%--      </div>--%>
 
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">기타</a>
-            </h4>>
-            <p class="card-text">예정에 없던 비가 옵니다. 외출 시 우산 챙기세요</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-          </div>
-        </div>
-      </div>
+<%--      <div class="col-lg-4 col-md-6 mb-4">--%>
+<%--        <div class="card h-100">--%>
+<%--          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>--%>
+<%--          <div class="card-body">--%>
+<%--            <h4 class="card-title">--%>
+<%--              <a href="#">기타</a>--%>
+<%--            </h4>>--%>
+<%--            <p class="card-text">예정에 없던 비가 옵니다. 외출 시 우산 챙기세요</p>--%>
+<%--          </div>--%>
+<%--          <div class="card-footer">--%>
+<%--            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>--%>
+<%--          </div>--%>
+<%--        </div>--%>
+<%--      </div>--%>
 
-      <div class="col-lg-4 col-md-6 mb-4">
+<%--      <div class="col-lg-4 col-md-6 mb-4">--%>
 
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">음식</a>
-            </h4>
-            <p class="card-text">기숙사에 목살아저씨 오셨습니다.</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-          </div>
-        </div>
-      </div>
+<%--        <div class="card h-100">--%>
+<%--          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>--%>
+<%--          <div class="card-body">--%>
+<%--            <h4 class="card-title">--%>
+<%--              <a href="#">음식</a>--%>
+<%--            </h4>--%>
+<%--            <p class="card-text">기숙사에 목살아저씨 오셨습니다.</p>--%>
+<%--          </div>--%>
+<%--          <div class="card-footer">--%>
+<%--            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>--%>
+<%--          </div>--%>
+<%--        </div>--%>
+<%--      </div>--%>
 
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">공연</a>
-            </h4>
-            <p class="card-text">경산 대추 축제가 열였습니다 많이 구경오세요!</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-          </div>
-        </div>
-      </div>
+<%--      <div class="col-lg-4 col-md-6 mb-4">--%>
+<%--        <div class="card h-100">--%>
+<%--          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>--%>
+<%--          <div class="card-body">--%>
+<%--            <h4 class="card-title">--%>
+<%--              <a href="#">공연</a>--%>
+<%--            </h4>--%>
+<%--            <p class="card-text">경산 대추 축제가 열였습니다 많이 구경오세요!</p>--%>
+<%--          </div>--%>
+<%--          <div class="card-footer">--%>
+<%--            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>--%>
+<%--          </div>--%>
+<%--        </div>--%>
+<%--      </div>--%>
 
     <!-- /.row -->
 

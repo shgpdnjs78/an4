@@ -50,8 +50,8 @@ function validateWithdrawal() {
         url: "/user/register",
         data: {
             "id" : id,
+            "name" : name,
             "pw" : password,
-            "name" : name
         },
         type: "POST",
         dataType:"json",

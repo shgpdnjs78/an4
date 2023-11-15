@@ -37,7 +37,7 @@
                 <a href="password" class="list-group-item">비밀번호 변경</a>
                 <a href="mymarker" class="list-group-item">등록한 마커</a>
                 <a href="cancel" class="list-group-item">회원 탈퇴</a>
-                <a href="cs" class="list-group-item">1:1 상당 문의</a>
+                <a href="cs" class="list-group-item">1:1 상담 문의</a>
             </div>
 
         </div>
@@ -45,7 +45,7 @@
         <div class="col-lg-6">
             <div class="p-5">
                 <div class="text-center">
-                    <h1 class="h4" id="h4">1:1 상당 문의</h1>
+                    <h1 class="h4" id="h4">1:1 상담 문의</h1>
                     <p class="h5" id="h5">어떤 점이 불편하셨나요?
                         고객님의 의견을 반영하여 더 좋은 모습으로 찾아 뵙기 위해 노력하겠습니다.</p>
                     <%-- 어떤 점이 불편하셨나요? 고객님의 의견을 반영하여 더 좋은 모습으로 찾아 뵙기 위해 노력하겠습니다.--%>

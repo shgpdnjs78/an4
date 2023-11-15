@@ -11,7 +11,7 @@
                 <a href="password" class="list-group-item">비밀번호 변경</a>
                 <a href="mymarker" class="list-group-item">등록한 마커</a>
                 <a href="cancel" class="list-group-item">회원 탈퇴</a>
-                <a href="cs" class="list-group-item">1:1 상당 문의</a>
+                <a href="cs" class="list-group-item">1:1 상담 문의</a>
             </div>
 
         </div>

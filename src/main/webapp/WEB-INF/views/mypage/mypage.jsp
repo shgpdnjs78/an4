@@ -37,7 +37,7 @@
           <a href="password" class="list-group-item">비밀번호 변경</a>
           <a href="mymarker" class="list-group-item">등록한 마커</a>
           <a href="cancel" class="list-group-item">회원 탈퇴</a>
-          <a href="cs" class="list-group-item">1:1 상담 문의</a>
+          <a href="cs" class="list-group-item">1:1 상당 문의</a>
 
       </div>
 
@@ -66,7 +66,7 @@
 <%--                <p id="email">📧shgpdnjs78@gmail.com</p>--%>
                 <!-- 전화번호 입력 폼 -->
 <%--                <button class="list-group-item" onclick="editPhoneNumber()">Edit Phone Number</button>--%>
-                <button class="editEmail" onclick="editEmail()">이메일 변경</button>
+                <button class="list-group-item" onclick="editEmail()">Edit Email</button>
 
 <%--                <div id="phoneNumberForm" style="display: none;">--%>
 <%--                    <input type="text" id="newPhoneNumber">--%>
@@ -74,8 +74,9 @@
 <%--                </div>--%>
                 <!-- 이메일 입력 폼 -->
                 <div id="emailForm" style="display: none;">
-                    <input type="email" id="updateEmail">
-                    <button onclick="return updateEmail() && alert('수정 되었습니다')" >수정</button>
+                    <input type="email" id="newEmail">
+                    <button onclick="updateEmail() && alert('수정 되었습니다')" >수정</button>
+
                 </div>
 
               <form id="profileImageForm" enctype="multipart/form-data">
@@ -90,7 +91,12 @@
     <section class="about">
         <!-- 이름 -->
         <header class="name">
-                <p id="email">📧${sessionScope.user.email}</p>
+            <p>&nbsp<span style="color: #2B3856;">HYEWON NOH</span></p>
+            <!-- 연락처 -->
+            <div class="contacts">
+<%--                <p id="phoneNumber">📞+(82)10-2385-6794</p>--%>
+                <p id="email">📧shgpdnjs78@gmail.com</p>
+                </div>
           </header>
           <br><br>
           <!-- 소개글 -->

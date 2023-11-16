@@ -8,6 +8,7 @@ class NohApplicationTests {
 
 	@Test
 	void contextLoads() {
+		System.out.println("commit test");
 	}
 
 }

@@ -102,7 +102,7 @@
                         </div>
                         <a href="login" class="btn btn-primary btn-user btn-block" onclick="return validateForm() && validateWithdrawal() && alert('탈퇴 되었습니다');">
                             탈퇴하기 </a>
-                        <a href="map" class="back-button" id="go-back-button">뒤로가기</a>
+                        <a href="map" class="back-button" id="go-back-button"></a>
                     </form>
 
                 <hr>

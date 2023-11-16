@@ -23,13 +23,9 @@
     <button class="tnwjd-button2" id="editButton2" onclick="alert('수정 되었습니다')">수정하기</button>
     <button class="tnwjd-button3" id="editButton3" onclick="alert('수정 되었습니다')">수정하기</button>
     <button class="delete-button3" id="deleteButton" onclick="alert('삭제 되었습니다')">삭제하기</button>
-    <a href="login" class="back-button" id="go-back-button">뒤로가기</a>
+    <a href="login" class="back-button" id="go-back-button">
+        <span class="back-icon"></span></a>
     <!-- HTML 파일에 js-cookie 라이브러리를 추가 -->
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
-
-    <div class="contacts">
-        <%--                <p id="phoneNumber">📞+(82)10-2385-6794</p>--%>
-        <p id="id">📧${sessionScope.user.email}</p>
-    </div>
 
 </div>

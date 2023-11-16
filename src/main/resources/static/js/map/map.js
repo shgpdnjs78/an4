@@ -87,9 +87,8 @@ var DB_DATA =
     //DB_DATA에 새로운 마커를 추가한다.
 // 로컬 스토리지에 현재 상태 저장
     localStorage.setItem('markers', JSON.stringify(DB_DATA));
-    var id = '<%= (String)session.getAttribute("user.email") %>\';\n' +
-        '    localStorage.setItem("id", id);';
-    localStorage.setItem("id", id);
+    var id = console.log(로컬스토리지.getItem(id));
+    // localStorage.setItem("id", id);
 // 이후 작업 (예: 지도에 마커 표시 등)
     displayMarkersOnMap();
 
@@ -392,7 +391,7 @@ function getPhoto() {
     // 사용자 ID 설정
 
     console.log(type, answer, longitude, latitude, img, id);
-    window.location.href = 'http://localhost/photo';
+    // window.location.href = 'http://localhost/photo';
     let location_check = true;
     $.ajax({
         url: "/user/map",
@@ -470,7 +469,7 @@ infowindow.addListener('domready', function () {
 
         // 위치 체크 성공 여부 확인
         if (locationCheck) {
-        //    window.location.href = 'http://localhost/photo';
+           window.location.href = 'http://localhost/photo';
             // 마커를 성공적으로 생성한 경우 infowindow를 닫음
             infowindow.close();
         }

@@ -45,7 +45,7 @@ label {
     width: 100px; /* Adjust the width of the circular button */
     height: 100px; /* Adjust the height of the circular button */
     border-radius: 50%; /* Makes the button circular */
-    background-color: rgba(220, 124, 218, 0.98); /* Button background color */
+    background-color: rgb(107, 189, 176); /* Button background color */
     color: #ffffff; /* Text color */
     text-decoration: none; /* Remove underline from the link */
     font-weight: bold;
@@ -53,6 +53,10 @@ label {
     bottom: 20px; /* Distance from the bottom */
     right: 20px; /* Distance from the right */
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1); /* Optional: Add a box shadow */
+    background-image: url('back.jpg'); /* Add background image */
+    background-size: cover; /* Ensure the background image covers the entire button */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the background image */
 }
 
 .back-button:hover {

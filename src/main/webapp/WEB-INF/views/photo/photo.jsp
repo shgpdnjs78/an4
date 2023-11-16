@@ -11,4 +11,5 @@
      <button class="re-button" class="rext-button" id="re-button" >다시 촬영</button>
     <a href="map" class="back-button" id="go-back-button">뒤로가기</a>
 
+
 </div>

@@ -81,14 +81,16 @@ public class UserService {
 //        return true;
 //    }
 //
-    public boolean locationRegisterProcess(String type, String answer, String lat, String lng,HttpServletRequest request) {
+    public boolean locationRegisterProcess(String type, String answer, String lat, String lng, String id, HttpServletRequest request) {
         HttpSession session = request.getSession();
+//        MapInfo user = userMapper.locationSaveProcess(type, answer,lat,lng, id);
+
         //사용자 정보 조회
         // 세션에서 UserInfo 객체 가져오기
-        UserInfo userInfo = (UserInfo) session.getAttribute("user");
+       // UserInfo userInfo = (UserInfo) session.getAttribute("user");
 
         // userInfo가 null이 아니라면 id를 가져오고, null이라면 빈 문자열 반환
-        String userId = (userInfo != null) ? userInfo.getName() : "";
+        //String userId = (userInfo != null) ? userInfo.getName() : "";
 
         // 사용자 정보 조회
         MapInfo user = userMapper.locationRegisterProcess(type, answer, lat, lng);
@@ -96,7 +98,7 @@ public class UserService {
         // session에 사용자 정보 설정
         MapInfo mapInfo = (MapInfo) session.getAttribute("map");
 
-        System.out.println(type + answer + lat + lng);
+        System.out.println(type + answer + lat + lng + id);
 
         return user == null || user.getName().equals("") ? false : true;
     }

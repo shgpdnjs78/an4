@@ -105,14 +105,16 @@ public class UserController {
 
     @GetMapping(value = {"/photo"})
     @PostMapping
-    public String photo(HttpServletRequest request, @RequestBody Map<String, String> data) {
-        String type = data.get("type");
-        String answer = data.get("answer");
-        String lat = data.get("lat");
-        String lng = data.get("lng");
+    public String photo(@RequestParam("type") String type, @RequestParam("answer") String answer,
+                        @RequestParam("lat") String lat, @RequestParam("lng") String lng, @RequestParam("id") String id, HttpServletRequest request) {
+        this.type = type;
+        this.answer = answer;
+        this.lat = lat;
+        this.lng = lng;
+        this.id = id; //id값 받아오기
 
         JsonResultDTO jsonResultDTO = new JsonResultDTO(false, "process fail", null);
-        boolean locationRegister_check = userService.locationRegisterProcess(data.get("type"), data.get("answer"), data.get("lat"), data.get("lng"), request);
+        boolean locationRegister_check = userService.locationRegisterProcess(type, answer, lat, lng, id,request);
 
         if (locationRegister_check) {
             jsonResultDTO.setSuccess();

@@ -97,6 +97,7 @@
                                             <button onclick="updateEmail() && alert('변경 되었습니다')" >변경</button>
 
                                         </div>
+
                                     </header>
                                     <br><br>
                                     <!-- 소개글 -->
@@ -127,7 +128,7 @@
 
         </div>
         <!-- /.row -->
-        <a href="map" class="back-button" id="go-back-button">뒤로가기</a>
+        <a href="map" class="back-button" id="go-back-button"></a>
 
     </div>
     <!-- /.container -->

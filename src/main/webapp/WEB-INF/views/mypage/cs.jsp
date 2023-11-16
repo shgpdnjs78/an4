@@ -73,7 +73,7 @@
                         </div>
 <%--                        <a href="login" class="c-button c-button--lg c-button--primary c-button--w460" id="saveBtn" onclick="return validateForm() && alert('문의 사항이 접수 되었습니다. 48시간 내로 메일로 답변 드리겠습니다.')">--%>
 <%--                            문의 등록하기 </a>--%>
-                        <a href="map" class="back-button" id="go-back-button"  >뒤로가기</a>
+                        <a href="map" class="back-button" id="go-back-button" ></a>
 
                     </form>
 

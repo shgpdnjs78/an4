@@ -158,7 +158,7 @@
 <%--  </div>--%>
 <%--  <!-- /.container -->--%>
 <%--</footer>--%>
-
+<a href="map" class="back-button" id="go-back-button"></a>
 
 </body>
 

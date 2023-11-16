@@ -60,3 +60,42 @@
     font-size: 18px; /* 소개글 폰트 크기 설정 */
     color: #333; /* 소개글 색상 설정 */
 }
+/* 제출 버튼 위치 조절 */
+.btn-user.btn-block {
+    width: 100%; /* 제출 버튼이 가로로 꽉 차도록 설정 */
+    background: #1d1d1b; /* 제출 버튼 배경색 설정 */
+}
+.back-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px; /* Adjust the width of the circular button */
+    height: 100px; /* Adjust the height of the circular button */
+    border-radius: 50%; /* Makes the button circular */
+    background-color: rgb(107, 189, 176); /* Button background color */
+    color: #ffffff; /* Text color */
+    text-decoration: none; /* Remove underline from the link */
+    font-weight: bold;
+    position: fixed;
+    bottom: 20px; /* Distance from the bottom */
+    right: 20px; /* Distance from the right */
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1); /* Optional: Add a box shadow */
+    background-image: url('back.jpg'); /* Add background image */
+    background-size: cover; /* Ensure the background image covers the entire button */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the background image */
+}
+
+.back-button:hover {
+    background-color: rgba(220, 124, 218, 0.98); /* Change background color on hover */
+    cursor: pointer;
+}
+
+/* 추가한 부분: 배경 이미지를 넣을 <span> 요소에 대한 스타일 */
+.back-button .back-icon {
+    display: inline-block;
+    width: 100%; /* Ensure the <span> takes up the entire button */
+    height: 100%; /* Ensure the <span> takes up the entire button */
+    background: transparent; /* Make the background transparent to reveal the image */
+    border-radius: inherit; /* Inherit the border-radius from the parent (.back-button) */
+}

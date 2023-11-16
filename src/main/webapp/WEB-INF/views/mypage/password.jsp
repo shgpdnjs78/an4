@@ -75,7 +75,7 @@
                 </form>
 
                 <hr>
-                <a href="map" class="back-button" id="go-back-button">뒤로가기</a>
+                <a href="map" class="back-button" id="go-back-button"></a>
 
               </div>
               </div>

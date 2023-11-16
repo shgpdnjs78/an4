@@ -117,6 +117,9 @@ function initMap() {
         center: {lat: 1234, lng: 12345},
         zoom: 15
     });
+    google.maps.event.addListener(map, 'click', function(event) {
+        placeMarker(event.latLng);
+    });
 
     // 현재 위치 가져오기
     if (navigator.geolocation) {
@@ -258,7 +261,36 @@ function initMap() {
     }
 }
 
+function placeMarker(location) {
+    var marker = new google.maps.Marker({
+        position: location,
+        map: map
+    });
 
+    map.setCenter(location);
+
+    var string = '';
+    for (let i = 1; i < category_type.length; i++) {
+        string += "<button class='gray-button' onclick='selectCategory(\'"+category_type[i]+"\')'>"+category_type[i]+"</button>";
+        //음식,공연,사고,기타  의 버튼이,위의 category_type 카테고리배열에 담긴만큼 생성 될것이다!!!
+    }
+    var infowindow = new google.maps.InfoWindow({
+        content: '<div><p>카테고리 선택</p>' +
+            string+  //여기서 버튼이 만들어진다
+            '<p>추가설명</p>' +
+            '<input type="text" name="extra" class="form-style" placeholder="추가설명을 입력하세요">' +
+            '<button id="cam-button" class="custom8-button" onclick="return getPhoto()">사진찍기</button>'
+    });
+
+    // 마커 클릭 이벤트 처리
+    marker.addListener('click', function() {
+        // 정보 창 생성
+        // 정보 창을 마커 위에 표시
+        infowindow.open(map, marker);
+    });
+}
+
+// 이걸  함수들 있는곳에 배치해놓으면  아마도? 동작할거임
 function editDescription(infoWindow,i) {
     console.log(infoWindow,i)
     // 사용자로부터 새로운 설명을 입력받음, 수정하기 버튼 누를때 불리는 함수

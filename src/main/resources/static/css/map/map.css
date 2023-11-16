@@ -80,6 +80,17 @@ body {
     z-index: 1; /* 맵 위에 버튼이 나타나도록 설정 */
 
 }
+.custom77-button{
+    position: absolute;
+    top: 12%;
+    right: 30%;
+    background-color: rgb(128, 128, 128);
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    z-index: 1;
+}
 
 .custom-button{
     left :1% ;
@@ -104,7 +115,7 @@ body {
 .custom3-button{
     position: absolute;
     top: 12%;
-    right: 20%;
+    right: 23%;
     background-color: #FFC0CBFF;
     color: #fff;
     padding: 10px 20px;
@@ -116,7 +127,7 @@ body {
 .custom4-button{
     position: absolute;
     top: 12%;
-    right: 15%;
+    right: 18%;
     background-color: #f6cf08;
     color: #fff;
     padding: 10px 20px;
@@ -128,7 +139,7 @@ body {
 .custom5-button{
     position: absolute;
     top: 12%;
-    right: 10%;
+    right: 13%;
     background-color: #e51717;
     color: #fff;
     padding: 10px 20px;
@@ -139,7 +150,7 @@ body {
 .custom6-button{
     position: absolute;
     top: 12%;
-    right: 5%;
+    right: 8%;
     background-color: #26e034;
     color: #fff;
     padding: 10px 20px;

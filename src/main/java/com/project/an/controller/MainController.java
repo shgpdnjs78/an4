@@ -1,5 +1,7 @@
 package com.project.an.controller;
 
+import com.project.an.vo.UserInfo;
+import jakarta.servlet.http.HttpSession;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 @MapperScan(value = "com.project.an.mapper",sqlSessionFactoryRef = "sqlSessionFactoryBean")
 @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
 public class MainController {
-    @Autowired
+
     //   private final MemberService memberService;
 //같이 묶어도 되는것
 // showingRegisterMarker , showingRegisterMarkerMap , endEvent
@@ -23,74 +25,100 @@ public class MainController {
     }
     // main map form
     @GetMapping("map")@PostMapping
-    public String mainMap() {
-
-        return "/map";
+    public String mainMap(HttpSession session) {
+        UserInfo user = (UserInfo) session.getAttribute("user");
+        String url = "/map";
+        if(user == null){
+            url = "redirect:/login";
+        }
+        return url;
     }
     //marker register photo form
     @GetMapping("photo")@PostMapping
-    public String markerRegisterPhoto() {
-
-        return "/photo";
+    public String markerRegisterPhoto(HttpSession session) {
+        UserInfo user = (UserInfo) session.getAttribute("user");
+        String url = "/map";
+        if(user == null){
+            url = "redirect:/login";
+        }
+        return url;
     }
     //mypage introduce form
     @GetMapping("mypage")@PostMapping
-    public String mypageIntroduce() {
-
-        return "/mypage";
+    public String mypageIntroduce(HttpSession session) {
+        UserInfo user = (UserInfo) session.getAttribute("user");
+        String url = "/mypage";
+        if(user == null){
+            url = "redirect:/login";
+        }
+        return url;
     }
     //mypage find password
     @GetMapping("password")@PostMapping
-    public String findPassword() {
-
-        return "/password";
+    public String findPassword(HttpSession session) {
+        UserInfo user = (UserInfo) session.getAttribute("user");
+        String url = "/password";
+        if(user == null){
+            url = "redirect:/login";
+        }
+        return url;
     }
     //my page register marker form
     @GetMapping("mymarker")@PostMapping
-    public String registerMarker() {
-
-        return "/mymarker";
+    public String registerMarker(HttpSession session) {
+        UserInfo user = (UserInfo) session.getAttribute("user");
+        String url = "/mymarker";
+        if(user == null){
+            url = "redirect:/login";
+        }
+        return url;
     }
     // mypage member cancel form
     @GetMapping("cancel")@PostMapping
-    public String memberCancel() {
-
-        return "/cancel";
+    public String memberCancel(HttpSession session) {
+        UserInfo user = (UserInfo) session.getAttribute("user");
+        String url = "/cancel";
+        if(user == null){
+            url = "redirect:/login";
+        }
+        return url;
     }
     //mypage show register marker form
     @GetMapping("mymarkers")@PostMapping
-    public String showingRegisterMarker() {
-
-        return "/mymarkers";
+    public String showingRegisterMarker(HttpSession session) {
+        UserInfo user = (UserInfo) session.getAttribute("user");
+        String url = "/mymarkers";
+        if(user == null){
+            url = "redirect:/login";
+        }
+        return url;
     } //showingRegisterMarker
 
     @GetMapping("singlemarker")@PostMapping
-    public String showingRegisterMarkerMap() {
-//            @RequestParam("위치정보.coordinateX") String coordinateX, @RequestParam("coordinateY") String coordinateY,
-//            Model model
-
-
-//        model.addAttribute("coordinateX",coordinateX);
-//        model.addAttribute("coordinateY",coordinateY);
-//        return "/singlemarker?id="+coordinateX+"pass="+coordinateY;
-        return "/singlemarker";
+    public String showingRegisterMarkerMap(HttpSession session) {
+        UserInfo user = (UserInfo) session.getAttribute("user");
+        String url = "/singlemarker";
+        if(user == null){
+            url = "redirect:/login";
+        }
+        return url;
 
     }
     // show end register marker form
     @GetMapping("endEvent")@PostMapping
-    public String root9() {
+    public String showingEndRegisterMarker() {
 
         return "/endEvent";
     }
     // mypage sned cs form
     @GetMapping("cs")@PostMapping
-    public String sendCs() {
-
-        return "/cs";
+    public String sendCs(HttpSession session) {
+        UserInfo user = (UserInfo) session.getAttribute("user");
+        String url = "/cs";
+        if(user == null){
+            url = "redirect:/login";
+        }
+        return url;
     }
-    @GetMapping("rptlvks")@PostMapping
-    public String root11() {
 
-        return "/rptlvks";
-    }
 }

@@ -51,7 +51,7 @@
 
     <div class="col-lg-4 col-md-6 mb-4">
       <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <a href="#" class="food-container"></a>
         <div class="card-body">
           <h4 class="card-title">
             <a href="http://localhost/mymarkers">음식</a>
@@ -63,7 +63,7 @@
 
     <div class="col-lg-4 col-md-6 mb-4">
       <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <a href="#" class="accident-container"></a>
         <div class="card-body">
           <h4 class="card-title">
             <a href="http://localhost/mymarkers">사고</a>
@@ -77,7 +77,7 @@
 
     <div class="col-lg-4 col-md-6 mb-4">
       <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <a href="#" class="concert-container"></a>
         <div class="card-body">
           <h4 class="card-title">
             <a href="#">공연</a>
@@ -89,11 +89,11 @@
 
     <div class="col-lg-4 col-md-6 mb-4">
       <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <a href="#" class="etc-container"></a>
         <div class="card-body">
           <h4 class="card-title">
             <a href="#">기타</a>
-          </h4>>
+          </h4>
           <p class="card-text">예정에 없던 비가 옵니다. 외출 시 우산 챙기세요</p>
         </div>
       </div>
@@ -102,24 +102,24 @@
     <div class="col-lg-4 col-md-6 mb-4">
 
       <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <a href="#" class="food-container"></a>
         <div class="card-body">
           <h4 class="card-title">
             <a href="#">음식</a>
           </h4>
-          <p class="card-text">기숙사에 목살아저씨 오셨습니다.</p>
+          <p class="card-text">기숙사 앞에 목살아저씨 오셨어요!</p>
         </div>
       </div>
     </div>
 
     <div class="col-lg-4 col-md-6 mb-4">
       <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <a href="#" class="concert-container"></a>
         <div class="card-body">
           <h4 class="card-title">
             <a href="#">공연</a>
           </h4>
-          <p class="card-text">경산 대추 축제가 열였습니다 많이 구경오세요!</p>
+          <p class="card-text">경산 대추 축제가 열였습니다. 많이 구경오세요!</p>
         </div>
       </div>
     </div>

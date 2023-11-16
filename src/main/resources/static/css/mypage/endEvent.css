@@ -1,3 +1,28 @@
+.food-container {
+    background-image: url('food.jpg');
+    background-size: cover;
+    display: block;
+    height: 340px;
+}
+.accident-container{
+    background-image: url('accident.jpg');
+    background-size: cover;
+    display: block;
+    height: 340px;
+}
+.concert-container{
+    background-image: url('concert.jpg');
+    background-size: cover;
+    display: block;
+    height: 340px;
+}
+.etc-container {
+    background-image: url('etc.jpg');
+    background-size: cover;
+    display: block;
+    height: 340px;
+}
+
 .c-tabs--type1 .c-tabs__button.is-active {
     background-color: #1d1d1b;
     color: #fff;
@@ -51,7 +76,7 @@
     display: inline-block;
     width: 100%; /* Ensure the <span> takes up the entire button */
     height: 100%; /* Ensure the <span> takes up the entire button */
-    background: transparent; /* Make the background transparent to reveal the image */
+    background-image: url("food.jpg"); /* Make the background transparent to reveal the image */
     border-radius: inherit; /* Inherit the border-radius from the parent (.back-button) */
 }
 .c-tabs--type1 .c-tabs__list {
@@ -72,9 +97,10 @@
 .col-lg-4 col-md-6 mb-4 {
     margin-top: 50px;
     margin-bottom: 30px;
+    background-image: url("food.jpg");
 }
 .card h-100 {
     margin-top: 50px;
     margin-bottom: 30px;
 }
-완료됨. 캐시 저장 중…
+

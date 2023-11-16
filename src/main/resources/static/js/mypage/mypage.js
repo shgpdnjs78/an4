@@ -4,8 +4,8 @@ src="vendor/bootstrap/js/bootstrap.bundle.min.js"
 //파라미터= 변수
 // 링크 파라미터를 들고와라 MAP의
 // 정보공유
-var getparam = 123;
-console.log(getparam)
+// var getparam = 123;
+// console.log(getparam)
 function editPhoneNumber() {
     // 전화번호 출력 영역을 숨기고 입력 폼을 보이게 함
     document.getElementById("phoneNumber").style.display = "none";
@@ -26,24 +26,6 @@ function editEmail() {
     document.getElementById("emailForm").style.display = "block";
 }
 
-function updatePhoneNumber() {
-    // 입력한 전화번호를 가져와서 출력 영역에 업데이트하고 입력 폼을 숨김
-    const newPhoneNumber = document.getElementById("newPhoneNumber").value;
-    document.getElementById("phoneNumber").innerText = `📞${newPhoneNumber}`;
-    document.getElementById("phoneNumber").style.display = "block";
-    document.getElementById("phoneNumberForm").style.display = "none";
-
-    return true;
-}
-function handlePhoneNumberUpdate() {
-    // 이메일 업데이트 함수 호출하여 이메일 업데이트 수행
-    const isPhoneNumberUpdated = updatePhoneNumber();
-
-    // 이메일이 성공적으로 업데이트된 경우에만 알람 메시지 표시
-    if (isPhoneNumberUpdated) {
-        alert('수정 되었습니다');
-    }
-}
 function updateEmail() {
     // 입력한 이메일을 가져와서 출력 영역에 업데이트하고 입력 폼을 숨김
     const newEmail = document.getElementById("newEmail").value;
@@ -93,9 +75,7 @@ function handleEmailUpdate() {
 }
 
 // 버튼 클릭 이벤트에 handleEmailUpdate() 함수를 연결
-document.getElementById("PhoneNumberUpdateButton").addEventListener("click", handlePhoneNumberUpdate);
-
-document.getElementById("emailUpdateButton").addEventListener("click", handleEmailUpdate);
+// document.getElementById("emailUpdateButton").addEventListener("click", handleEmailUpdate);
 
 // 파일 선택 시 미리보기 기능 구현
 const fileInput = document.querySelector('input[type="file"]');

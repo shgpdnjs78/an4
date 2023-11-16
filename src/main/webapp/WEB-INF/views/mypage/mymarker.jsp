@@ -49,17 +49,17 @@
     </div>
 
 
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="http://localhost/mymarkers">음식</a>
-            </h4>
-            <p class="card-text">경산 시장에 목살아저씨 왔어요</p>
-          </div>
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100">
+        <a href="#" class="food-container"></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="http://localhost/mymarkers">음식</a>
+          </h4>
+          <p class="card-text">임당역 5번 출구 앞에 붕어빵 가게 왔어요</p>
         </div>
       </div>
+    </div>
 
 <%--      <div class="col-lg-4 col-md-6 mb-4">--%>
 <%--        <div class="card h-100">--%>
@@ -146,7 +146,7 @@
     </div>
 
 <!-- /.row -->
-<a href="map" class="back-button" id="go-back-button">뒤로가기</a>
+<%--<a href="map" class="back-button" id="go-back-button">뒤로가기</a>--%>
 
 </div>
 <!-- /.container -->

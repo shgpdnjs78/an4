@@ -7,7 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-
 <a href="https://front.codes/" class="logo" target="_blank">
 </a>
 
@@ -37,13 +36,13 @@
             --%>
                                         <a href="map" class="btn mt-4" onclick="return validateForm()">로그인</a>
 
-<%--                                        <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>--%>
+                                    <%--                                        <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>--%>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-back">
                                 <form action="/login" method="post">
-                                <div class="center-wrap">
+                                    <div class="center-wrap">
                                     <div class="section text-center">
                                         <h4 class="mb-4 pb-3">회원가입</h4>
                                         <div class="form-group">
@@ -59,6 +58,7 @@
                                             <i class="input-icon uil uil-lock-alt"></i>
                                         </div>
                                         <a href="login" class="btn mt-4"  onclick="return validateWithdrawal()">회원가입</a>
+
                                     </div>
                                 </div>
                                 </form>

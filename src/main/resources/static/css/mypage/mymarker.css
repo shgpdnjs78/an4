@@ -1,3 +1,9 @@
+.food-container {
+    background-image: url('food.jpg');
+    background-size: cover;
+    display: block;
+    height: 340px;
+}
 .c-tabs--type1 .c-tabs__button.is-active {
     background-color: #1d1d1b;
     color: #fff;

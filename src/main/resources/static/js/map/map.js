@@ -1,5 +1,3 @@
-src="https://code.jquery.com/jquery-3.6.4.min.js"
-
 var infowindow;
 
 // var id;
@@ -87,7 +85,7 @@ var DB_DATA =
     //DB_DATA에 새로운 마커를 추가한다.
 // 로컬 스토리지에 현재 상태 저장
     localStorage.setItem('markers', JSON.stringify(DB_DATA));
-    var id = console.log(로컬스토리지.getItem(id));
+    var id = console.log(localStorage.getItem(id));
     // localStorage.setItem("id", id);
 // 이후 작업 (예: 지도에 마커 표시 등)
     displayMarkersOnMap();

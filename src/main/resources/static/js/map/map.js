@@ -335,8 +335,8 @@ function getPhoto() {
 
     async function add_Marker(){
         await marker_obj.setMap(null);
-        console.log(type, answer, longitude, latitude, img, id,title,icon);
-        addMarker(type, answer, longitude, latitude, img, id,title,icon);
+        console.log(type, answer, longitude, latitude, id,title,icon);
+        addMarker(type, answer, longitude, latitude, id,title,icon);
     }
     add_Marker();
 
@@ -386,7 +386,7 @@ function getPhoto() {
     // return location_check;
 
 }
-function addMarker(type, answer, longitude, latitude, img, id,title,icon) {
+function addMarker(type, answer, longitude, latitude,  id,title,icon) {
     // 새로운 마커를 DB_DATA에 추가
     var storedMarkers = localStorage.getItem('markers');
     if(storedMarkers){
@@ -577,7 +577,7 @@ function displayMarkersOnMap(DB_DATA) {
                     '<br>'+
                     '<span id="additionalDescription'+i+'">'+DB_DATA[i].answer+'</span>' +
                     '<br>'+
-                    // '<img src="'+DB_DATA[i].img+'" alt="#">' +
+                    // '<img src="'+DB_DATA[i].lolokslk+'" alt="#">' +
                     '<br>'+
                     edit_btn +
                     delete_btn;

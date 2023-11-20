@@ -1,3 +1,24 @@
+.back-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px; /* Adjust the width of the circular button */
+    height: 430px; /* Adjust the height of the circular button */
+    border-radius: 50%; /* Makes the button circular */
+    /*background-color: rgb(107, 189, 176); !* Button background color *!*/
+    color: #ffffff; /* Text color */
+    text-decoration: none; /* Remove underline from the link */
+    font-weight: bold;
+    position: fixed;
+    bottom: 70px; /* Distance from the bottom */
+    left: 60px; /* Distance from the right */
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1); /* Optional: Add a box shadow */
+    background-image: url('logo.jpg'); /* Add background image */
+    background-size: cover; /* Ensure the background image covers the entire button */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the background image */
+}
+
 /*.styled-image {*/
 /*    width: 300px; !* 이미지의 너비 설정 *!*/
 /*    border: 2px solid #333; !* 테두리 스타일 및 색상 설정 *!*/
@@ -182,8 +203,6 @@ h6 span{
 }
 .card-back {
     transform: rotateY(180deg);
-    left: 100%; /* 변경된 부분: 왼쪽에서 오른쪽으로 이동 */
-    top: 0;
 }
 .checkbox:checked ~ .card-3d-wrap .card-3d-wrapper {
     transform: rotateY(180deg);

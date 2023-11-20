@@ -67,9 +67,9 @@
 
                             <div class="changeEmail text-center">
                                 <p id="email">📧${sessionScope.user.email}</p>
-                                <button class="list-group-item" onclick="editName()">이름 변경하기</button>
-                                <p id="username">📧${sessionScope.user.name}</p>
                                 <button class="list-group-item" onclick="editEmail()">이메일 변경하기</button>
+<%--                                <p id="name">📧${sessionScope.user.name}</p>--%>
+<%--                                <button class="list-group-item" onclick="editName()">이름 변경하기</button>--%>
                             </div>
                             </form>
                                 <section class="about">
@@ -81,6 +81,11 @@
                                         <div id="emailForm" style="display: none;">
                                             <input type="email" id="newEmail">
                                             <button onclick="updateEmail() && alert('변경 되었습니다')" >변경</button>
+
+                                        </div>
+                                        <div id="nameForm" style="display: none;">
+                                            <input type="name" id="newName">
+                                            <button onclick="updateName() && alert('변경 되었습니다')" >변경</button>
 
                                         </div>
 

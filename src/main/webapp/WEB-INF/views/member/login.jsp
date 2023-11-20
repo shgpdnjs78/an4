@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+
 <a href="https://front.codes/" class="logo" target="_blank">
 </a>
 
@@ -36,29 +37,28 @@
             --%>
                                         <a href="map" class="btn mt-4" onclick="return validateForm()">로그인</a>
 
-                                    <%--                                        <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>--%>
+<%--                                        <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>--%>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-back">
                                 <form action="/login" method="post">
-                                    <div class="center-wrap">
+                                <div class="center-wrap">
                                     <div class="section text-center">
                                         <h4 class="mb-4 pb-3">회원가입</h4>
                                         <div class="form-group">
-                                            <input type="text" name="name" class="form-style" placeholder="Your Full Name" id="name" autocomplete="off">
+                                            <input type="text" name="name" class="form-style" placeholder="이름" id="name" autocomplete="off">
                                             <i class="input-icon uil uil-user"></i>
                                         </div>
                                         <div class="form-group mt-2">
-                                            <input type="email" name="email" class="form-style" placeholder="Your Email" id="joinEmail" autocomplete="off">
+                                            <input type="email" name="email" class="form-style" placeholder="이메일" id="joinEmail" autocomplete="off">
                                             <i class="input-icon uil uil-at"></i>
                                         </div>
                                         <div class="form-group mt-2">
-                                            <input type="password" name=password" class="form-style" placeholder="Your Password" id="joinPass" autocomplete="off">
+                                            <input type="password" name=password" class="form-style" placeholder="비밀번호" id="joinPass" autocomplete="off">
                                             <i class="input-icon uil uil-lock-alt"></i>
                                         </div>
                                         <a href="login" class="btn mt-4"  onclick="return validateWithdrawal()">회원가입</a>
-
                                     </div>
                                 </div>
                                 </form>

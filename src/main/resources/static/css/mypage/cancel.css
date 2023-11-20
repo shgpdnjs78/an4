@@ -3,14 +3,14 @@
     color: #100000;
     margin-top: 95px;
     /*margin-bottom: 70px;*/
-    width: 800px; /* 너비를 원하는 값으로 지정하세요 */
-    height: 1000px; /* 높이를 원하는 값으로 지정하세요 */
+    width: 700px; /* 너비를 원하는 값으로 지정하세요 */
+    height: 910px; /* 높이를 원하는 값으로 지정하세요 */
 }
 .text-center {
     font-size: 1.1rem;
     font-weight: 400;
     line-height: 1.2;
-    margin-top: 50px;
+    margin-top: 5px;
     margin-bottom: 40px;
 }
 .checkbox-group {
